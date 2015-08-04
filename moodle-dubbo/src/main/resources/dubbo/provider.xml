@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        ">
+
+	<dubbo:application name="${moodle.provider.appname}" />
+	<dubbo:registry protocol="${moodle.provider.registry.protocol}"
+		address="${moodle.provider.registry.address}" file="${moodle.provider.registry.file}" />
+	<dubbo:protocol name="${moodle.provider.protocol}" server="${moodle.provider.protocol.server}"
+		port="${moodle.provider.protocol.port}" contextpath="${moodle.provider.protocol.contextpath}" />
+	<dubbo:provider timeout="${moodle.provider.timeout}"
+		retries="2" threads="1000" />
+
+	<dubbo:annotation package="com.doer.moodle" />
+
+</beans>
