@@ -8,13 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-/**
- * 基础dao实现类
- * 
- * @author 毕希研
- * 
- * @param <T>
- */
 public class BaseDaoImpl<T> implements IBaseDao<T> {
 
 	@Autowired

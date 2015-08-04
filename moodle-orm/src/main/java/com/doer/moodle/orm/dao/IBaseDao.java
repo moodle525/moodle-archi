@@ -4,13 +4,6 @@ import java.io.Serializable;
 
 import org.hibernate.Session;
 
-/**
- * 基础dao接口
- * 
- * @author 毕希研
- * 
- * @param <T>
- */
 public interface IBaseDao<T> {
 
 	/**
