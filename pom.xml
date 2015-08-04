@@ -13,6 +13,7 @@
 		<module>moodle-web</module>
 		<module>moodle-orm</module>
     <module>moodle-interfaces</module>
+    <module>moodle-image</module>
   </modules>
 
 	<properties>
