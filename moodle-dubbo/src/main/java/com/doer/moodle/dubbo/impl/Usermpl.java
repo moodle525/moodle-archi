@@ -43,7 +43,7 @@ public class Usermpl implements IUser {
 	public void saveUser(String userName, String password) {
 		User user = new User();
 		user.setName(userName);
-		user.setPassword(password);
+		user.setPassword("sss");
 		user.setCreateTime(new Timestamp(System.currentTimeMillis()));
 		user.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 		log.info("----" + userName + "---" + password);
