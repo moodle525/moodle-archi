@@ -21,6 +21,12 @@ import com.doer.moodle.orm.entity.User;
  * 现在你可以在你本地部署一个nexus，http://127.0.0.1:8081/nexus/content/repositories/central就可以了
  * 开始做提交。
  * 还有 moodle是父工程，moodle-xxx是其下模块。
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 我来了
  * @Description 
  * @author Administrator
  * @date 2015年8月5日 下午11:16:27 
