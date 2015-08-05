@@ -49,10 +49,7 @@ public class Usermpl implements IUser {
 		log.info("----" + userName + "---" + password);
 		userDao.save(user);
 	}
-/**
- * hsaasaihoahdoiqhdoiqhwoidhqodwh
- * afewfqeoahico
- */
+
 	@Override
 	public List<UserInfo> serach(String key) {
 		List<User> users = userDao.search(key);
@@ -68,13 +65,5 @@ public class Usermpl implements IUser {
 		}
 		return infos;
 	}
-	/**
-	 * 啊代发费全额付全额付清费全额付清而非
-	 *
-	 * 啊代发费全额付全额付清费全额付清而非
-	 *
-	 * 啊代发费全额付全额付清费全额付清而非
-	 */
-	
-	
+
 }
