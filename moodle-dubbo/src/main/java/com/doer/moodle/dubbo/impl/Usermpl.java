@@ -49,7 +49,9 @@ public class Usermpl implements IUser {
 		log.info("----" + userName + "---" + password);
 		userDao.save(user);
 	}
-
+/**
+ * hsaasaihoahdoiqhdoiqhwoidhqodwh
+ */
 	@Override
 	public List<UserInfo> serach(String key) {
 		List<User> users = userDao.search(key);
