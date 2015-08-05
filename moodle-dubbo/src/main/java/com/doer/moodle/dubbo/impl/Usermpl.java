@@ -15,6 +15,17 @@ import com.doer.moodle.interfaces.entity.UserInfo;
 import com.doer.moodle.orm.dao.intf.IUserDao;
 import com.doer.moodle.orm.entity.User;
 
+/**
+ * 演示一个如何提交代码。然后在我这就可以更新到。你以后想开发就可以直接提交。
+ * 现在这些报错，是因为我这nexus没有公网出去，以后有空，我打算把它放到阿里云上，基础设备都公网出去，然后开源。
+ * 现在你可以在你本地部署一个nexus，http://127.0.0.1:8081/nexus/content/repositories/central就可以了
+ * 开始做提交。
+ * 还有 moodle是父工程，moodle-xxx是其下模块。
+ * @Description 
+ * @author Administrator
+ * @date 2015年8月5日 下午11:16:27 
+ * @version V1.3.1
+ */
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class Usermpl implements IUser {
