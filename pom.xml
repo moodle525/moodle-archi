@@ -15,15 +15,15 @@
     <module>moodle-interfaces</module>
     <module>moodle-image</module>
   </modules>
-
+ 
 	<properties>
 		<!-- VERSION info -->
 		<spring.version>4.0.5.RELEASE</spring.version>
 		<jboos.version>3.0.11.Final</jboos.version>
 	</properties>
 
-	<repositories>
-		<repository>
+	<repositories> 
+		<repository> 
 			<id>central</id>
 			<name>Central</name>
 			<url>http://127.0.0.1:8081/nexus/content/repositories/central</url>
