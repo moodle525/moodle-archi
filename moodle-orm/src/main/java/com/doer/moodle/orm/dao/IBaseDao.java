@@ -61,5 +61,6 @@ public interface IBaseDao<T> {
 	 * 刷新缓存
 	 */
 	public void flush();
+	
 
 }
