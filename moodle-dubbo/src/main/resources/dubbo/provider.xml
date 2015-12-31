@@ -10,11 +10,11 @@
 	<dubbo:application name="${moodle.provider.appname}" />
 	<dubbo:registry protocol="${moodle.provider.registry.protocol}"
 		address="${moodle.provider.registry.address}" file="${moodle.provider.registry.file}" />
-	<dubbo:protocol name="${moodle.provider.protocol}"
-		port="${moodle.provider.protocol.port}" />
+	<dubbo:protocol name="${moodle.provider.protocol}" port="${moodle.provider.protocol.port}" />
 	<dubbo:provider timeout="${moodle.provider.timeout}"
 		retries="2" threads="1000" />
 
 	<dubbo:annotation package="com.doer.moodle" />
-
+	<!-- <dubbo:service interface="com.doer.moodle.interfaces.IUser"
+		ref="user" /> -->
 </beans>

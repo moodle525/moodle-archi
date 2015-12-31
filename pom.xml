@@ -42,7 +42,7 @@
 				<exclusion>
 					<groupId>org.springframework</groupId>
 					<artifactId>spring</artifactId>
-				</exclusion>
+				</exclusion> 
 			</exclusions>
 		</dependency>
 		<!-- spring -->
