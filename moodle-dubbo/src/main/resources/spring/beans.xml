@@ -26,10 +26,11 @@
 	<aop:aspectj-autoproxy proxy-target-class="true" />
 
 	<!-- 配置要扫描的包 -->
-	<!-- <context:component-scan base-package="com.doer.moodle" /> -->
+	<context:component-scan base-package="com.doer.moodle" />
 
 	<bean id="user" class="com.doer.moodle.dubbo.impl.Usermpl" />
 	<import resource="classpath*:spring/beans_datasource.xml" />
+	<import resource="classpath*:spring/beans_redis_datasource.xml" />
 
 
 </beans>
