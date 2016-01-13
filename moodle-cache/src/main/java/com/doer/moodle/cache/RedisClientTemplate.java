@@ -2966,6 +2966,7 @@ public class RedisClientTemplate {
 		return result;
 	}
 
+	@SuppressWarnings("deprecation")
 	public List<Object> pipelined(ShardedJedisPipeline shardedJedisPipeline) {
 		ShardedJedis shardedJedis = redisDataSource.getRedisClient();
 		List<Object> result = null;

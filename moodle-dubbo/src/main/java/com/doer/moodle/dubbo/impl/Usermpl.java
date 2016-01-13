@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.alibaba.dubbo.config.annotation.Service;
 import com.doer.moodle.interfaces.IUser;
 import com.doer.moodle.interfaces.entity.UserInfo;
 import com.doer.moodle.orm.dao.intf.IUserDao;
@@ -20,7 +21,7 @@ import com.doer.moodle.orm.entity.User;
  * @date 2015年8月5日 下午11:16:27 
  * @version V1.3.1
  */
-//@Service
+@Service
 @Transactional(rollbackFor = Exception.class)
 public class Usermpl implements IUser {
 	private static final Logger log = Logger.getLogger(Usermpl.class);

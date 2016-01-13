@@ -1,6 +1,5 @@
 package com.doer.moodle.web.controller;
 
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +12,7 @@ import com.doer.moodle.common.util.SignUtil;
 @Controller
 @RequestMapping(value = "/wechat")
 public class WeChatController {
-	private static final Logger log = Logger.getLogger(WeChatController.class);
+	//private static final Logger log = Logger.getLogger(WeChatController.class);
 
 	@RequestMapping(value = "/authentication")
 	@ResponseBody

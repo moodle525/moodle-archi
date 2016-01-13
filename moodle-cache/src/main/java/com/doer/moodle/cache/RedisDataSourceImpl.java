@@ -8,31 +8,32 @@ import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
 @Repository
-public class RedisDataSourceImpl implements RedisDataSource{
-	private static final Logger log = Logger.getLogger(RedisDataSourceImpl.class);
+public class RedisDataSourceImpl implements RedisDataSource {
+	private static final Logger log = Logger
+			.getLogger(RedisDataSourceImpl.class);
 
-    @Autowired
-    private ShardedJedisPool    shardedJedisPool;
+	@Autowired
+	private ShardedJedisPool shardedJedisPool;
 
-    public ShardedJedis getRedisClient() {
-        try {
-            ShardedJedis shardJedis = shardedJedisPool.getResource();
-            return shardJedis;
-        } catch (Exception e) {
-            log.error("getRedisClent error", e);
-        }
-        return null;
-    }
+	public ShardedJedis getRedisClient() {
+		try {
+			ShardedJedis shardJedis = shardedJedisPool.getResource();
+			return shardJedis;
+		} catch (Exception e) {
+			log.error("getRedisClent error", e);
+		}
+		return null;
+	}
 
-    public void returnResource(ShardedJedis shardedJedis) {
-        shardedJedisPool.returnResource(shardedJedis);
-    }
+	public void returnResource(ShardedJedis shardedJedis) {
+		shardedJedisPool.returnResource(shardedJedis);
+	}
 
-    public void returnResource(ShardedJedis shardedJedis, boolean broken) {
-        if (broken) {
-            shardedJedisPool.returnBrokenResource(shardedJedis);
-        } else {
-            shardedJedisPool.returnResource(shardedJedis);
-        }
-    }
+	public void returnResource(ShardedJedis shardedJedis, boolean broken) {
+		if (broken) {
+			shardedJedisPool.returnBrokenResource(shardedJedis);
+		} else {
+			shardedJedisPool.returnResource(shardedJedis);
+		}
+	}
 }
