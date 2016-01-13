@@ -9,7 +9,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.doer.moodle.interfaces.IUser;
 import com.doer.moodle.interfaces.entity.UserInfo;
 import com.doer.moodle.orm.dao.intf.IUserDao;

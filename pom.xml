@@ -6,15 +6,16 @@
 	<artifactId>moodle</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>moodle</name>
+	<url>http://maven.apache.org</url>
 	<modules>
-		<module>moodle-base</module>
 		<module>moodle-common</module>
-		<module>moodle-dubble</module>
 		<module>moodle-dubbo</module>
 		<module>moodle-web</module>
 		<module>moodle-orm</module>
 		<module>moodle-interfaces</module>
 		<module>moodle-image</module>
+		<module>moodle-cache</module>
 	</modules>
 
 	<properties>
@@ -42,7 +43,7 @@
 				<exclusion>
 					<groupId>org.springframework</groupId>
 					<artifactId>spring</artifactId>
-				</exclusion> 
+				</exclusion>
 			</exclusions>
 		</dependency>
 		<!-- spring -->
@@ -84,10 +85,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 		</dependency>
 		<dependency>
@@ -102,7 +99,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
-	
+
 		<!-- ZOOKEEPER -->
 		<dependency>
 			<groupId>org.apache.zookeeper</groupId>
@@ -135,6 +132,11 @@
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.8.3</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.6</version>
 		</dependency>
 		<!-- Juint -->
 		<dependency>
