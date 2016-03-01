@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.doer</groupId>
 	<artifactId>moodle</artifactId>
@@ -15,8 +16,10 @@
 		<module>moodle-interfaces</module>
 		<module>moodle-image</module>
 		<module>moodle-cache</module>
-    <module>moodle-file</module>
-  </modules>
+		<module>moodle-file</module>
+		<module>moodle-mybatis</module>
+		<module>moodle-test</module>
+	</modules>
 
 	<properties>
 		<!-- VERSION info -->
@@ -34,6 +37,11 @@
 	</repositories>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+		</dependency>
 		<!-- dubbox dependency -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
