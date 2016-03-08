@@ -37,5 +37,10 @@
 			<artifactId>moodle-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.doer</groupId>
+			<artifactId>moodle-image</artifactId> 
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 </project>

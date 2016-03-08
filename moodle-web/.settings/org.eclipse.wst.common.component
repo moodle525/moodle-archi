@@ -10,6 +10,9 @@
         <dependent-module archiveName="moodle-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-common/moodle-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="moodle-image.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-image/moodle-image">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/moodle-web/target/classes"/>
         <property name="context-root" value="moodle"/>
     </wb-module>

@@ -8,6 +8,9 @@ import java.util.Random;
 
 import com.doer.moodle.image.captcha.Captcha;
 
+/**
+ * 验证码工厂，用于产生验证码实例
+ */
 public class CaptchaFactory {
 	private CaptchaFactory() {
 
@@ -67,10 +70,12 @@ public class CaptchaFactory {
 
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
+		Captcha image = null;
 		for (int i = 0; i < 10000; i++) {
-			CaptchaFactory.genImage(-1, -1, -1);
+			image = CaptchaFactory.genImage(-1, -1, -1);
 		}
-		System.out.println(System.currentTimeMillis() - start);
+		System.out.println(System.currentTimeMillis() - start + ","
+				+ image.getCaptchCode());
 
 	}
 }

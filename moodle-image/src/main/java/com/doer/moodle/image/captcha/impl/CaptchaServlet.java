@@ -76,7 +76,7 @@ public class CaptchaServlet extends HttpServlet implements ICaptchaManager {
 	 * @return
 	 */
 	public static String getCaptchaCode(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
+		HttpSession session = request.getSession(false);//若存在会话则返回该会话，否则返回NULL
 		if (null == session
 				|| null == session.getAttribute(CAPTCHA_SESSION_KEY))
 			return null;

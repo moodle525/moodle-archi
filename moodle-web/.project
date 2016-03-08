@@ -5,6 +5,7 @@
 	<projects>
 		<project>moodle-interfaces</project>
 		<project>moodle-common</project>
+		<project>moodle-image</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

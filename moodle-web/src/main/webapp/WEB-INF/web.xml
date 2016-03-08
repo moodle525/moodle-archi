@@ -4,6 +4,19 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>moodle</display-name>
+	
+	<listener>
+		<listener-class>com.doer.moodle.image.captcha.impl.CaptchaContextListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>captcha</servlet-name>
+		<servlet-class>com.doer.moodle.image.captcha.impl.CaptchaServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>captcha</servlet-name>
+		<url-pattern>/captha</url-pattern>
+	</servlet-mapping>
 
 	<!-- SpringMVC DispatcherServlet -->
 	<servlet>
