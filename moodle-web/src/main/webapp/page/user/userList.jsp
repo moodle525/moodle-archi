@@ -11,30 +11,35 @@
 <title>用户简单操作</title>
 <%@ include file="/page/common/common.jsp"%>
 <script type="text/javascript">
+	
+
 	$(function() {
 		$("#addUserInfo").hide();
 		$("#addNew").hide();
 
-		$("#beginSearch").bind("click", function() {
-			$.ajax({
-				type : 'POST',
-				url : _base + '/user/search',
-				dataType : 'json',
-				data : {
-					key : $("#searchInfo").val()
-				},
-				success : function(data) {
-					$("#searchResult").show();
-					var content = "";
-					var counter = 0;
-					$.each(data.data, function(i) {
-						counter++;
-						content += this.name+" ";
+		$("#beginSearch").bind(
+				"click",
+				function() {
+					$.ajax({
+						type : 'POST',
+						url : _base + '/user/search',
+						dataType : 'json',
+						data : {
+							key : $("#searchInfo").val()
+						},
+						success : function(data) {
+							$("#searchResult").show();
+							var content = "";
+							var counter = 0;
+							$.each(data.data, function(i) {
+								counter++;
+								content += this.name + " ";
+							});
+							$("#searchResult").html(
+									"共" + counter + "个数据：" + content + "<br>");
+						}
 					});
-					$("#searchResult").html("共"+counter+"个数据："+content + "<br>");
-				}
-			});
-		});
+				});
 	});
 
 	function addUser(btn) {
