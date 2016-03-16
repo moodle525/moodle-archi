@@ -11,7 +11,7 @@ public class CaptchaProducer implements Runnable {
 	private int width;
 	private int height;
 	private int charCount;
-	private int queueSize = 4096;
+	private int queueSize = 10;
 
 	public CaptchaProducer(TransferQueue<Captcha> captchaQueue, int width,
 			int height, int charCount) {
@@ -28,13 +28,15 @@ public class CaptchaProducer implements Runnable {
 			// 生成图片
 			captcha = CaptchaFactory.genImage(width, height, charCount);
 			// 增加到队列
-			if (!captchaQueue.tryTransfer(captcha)) {
+			//transfer：如果消费端在等待获取数据，则推给消费端，并返回true，否则false
+			if (!captchaQueue.tryTransfer(captcha)) {//无消费端，则把验证码对象放入队列中
 				try {
 					if (captchaQueue.size() < queueSize) {
 						captchaQueue.put(captcha);
 					}else {
 						captchaQueue.transfer(captcha);
 					}
+					System.out.println("..队列长度...."+captchaQueue.size()+"..验证码..."+captcha.getCaptchCode());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

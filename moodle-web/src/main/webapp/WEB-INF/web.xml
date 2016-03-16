@@ -15,7 +15,7 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>captcha</servlet-name>
-		<url-pattern>/captha</url-pattern>
+		<url-pattern>/captcha</url-pattern>
 	</servlet-mapping>
 
 	<!-- SpringMVC DispatcherServlet -->

@@ -24,6 +24,8 @@ public class CaptchaConsumer {
 	public Captcha getCaptcha() {
 		Captcha captcha = null;
 		try {
+			//Retrieves and removes the head of this queue, waiting 
+			//up to the specified wait time if necessary for an element to become available.
 			captcha = captchaQueue.poll(waitTime, TimeUnit.MILLISECONDS);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

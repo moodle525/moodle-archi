@@ -40,6 +40,18 @@
 						}
 					});
 				});
+		
+		$("#crossDomainButton").bind("click",function(){
+			$.ajax({
+				type:"POST",
+				url:"http://www.baidu.com",
+				dataType:"html",
+				crossDomain: true,
+				success:function(data){
+					$("crossDomain").html(data);
+				}
+			});
+		});
 	});
 
 	function addUser(btn) {
@@ -94,5 +106,8 @@
 			type="button" id="beginSearch" value="搜个关键字">
 	</div>
 	<div id="searchResult" style="display: none" align="center"></div>
+	<input
+			type="button" id="crossDomainButton" value="跨域">
+	<div id="crossDomain" align="center"></div>
 </body>
 </html>

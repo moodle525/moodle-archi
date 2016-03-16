@@ -17,7 +17,7 @@ import redis.clients.jedis.ShardedJedisPipeline;
 import redis.clients.jedis.SortingParams;
 import redis.clients.jedis.Tuple;
 
-@Repository
+//@Repository
 public class RedisClientTemplate {
 
 	private static final Logger log = Logger
