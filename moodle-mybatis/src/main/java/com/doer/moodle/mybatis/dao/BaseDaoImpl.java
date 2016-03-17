@@ -17,7 +17,6 @@ import page.BaseEntity;
 import page.PageBean;
 import page.PageParam;
 
-
 /**
  * 
  * @描述: 数据访问层基础支撑类.
@@ -55,7 +54,7 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 	public void setSessionTemplate(SqlSessionTemplate sessionTemplate) {
 		this.sessionTemplate = sessionTemplate;
 	}
-	
+
 	public SqlSession getSqlSession() {
 		return super.getSqlSession();
 	}
@@ -189,8 +188,10 @@ public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSup
 
 		Object isCount = paramMap.get("isCount"); // 是否统计当前分页条件下的数据：1:是，其他为否
 		if (isCount != null && "1".equals(isCount.toString())) {
-			Map<String, Object> countResultMap = sessionTemplate.selectOne(getStatement(SQL_COUNT_BY_PAGE_PARAM), paramMap);
-			return new PageBean(pageParam.getPageNum(), pageParam.getNumPerPage(), count.intValue(), list, countResultMap);
+			Map<String, Object> countResultMap = sessionTemplate.selectOne(getStatement(SQL_COUNT_BY_PAGE_PARAM),
+					paramMap);
+			return new PageBean(pageParam.getPageNum(), pageParam.getNumPerPage(), count.intValue(), list,
+					countResultMap);
 		} else {
 			// 构造分页对象
 			return new PageBean(pageParam.getPageNum(), pageParam.getNumPerPage(), count.intValue(), list);

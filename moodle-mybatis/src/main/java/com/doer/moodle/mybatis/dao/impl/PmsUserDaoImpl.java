@@ -6,7 +6,6 @@ import com.doer.moodle.mybatis.dao.BaseDaoImpl;
 import com.doer.moodle.mybatis.dao.entity.PmsUser;
 import com.doer.moodle.mybatis.dao.intf.IPmsUserDao;
 
-
 /**
  * 
  * @描述: 用户表数据访问层接口实现类.

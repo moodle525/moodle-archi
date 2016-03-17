@@ -3,7 +3,7 @@
 <mapper namespace="wusc.edu.demo.user.dao.impl.PmsUserDaoImpl">
 
 	<!-- 用户信息表 -->
-	<sql id="pms_user"> edu_edmo_pms_user </sql>
+	<sql id="pms_user"> pms_user </sql>
 
 	<resultMap id="beanMap" type="PmsUser">
 		<id column="id" property="id" />
