@@ -29,10 +29,10 @@
 	<context:component-scan base-package="com.doer.moodle" />
 
 	<!--hibernate -->
-	<import resource="classpath*:spring/beans_datasource.xml" />
+	<!-- <import resource="classpath*:spring/beans_datasource.xml" /> -->
 	
 	<!-- mybatis -->
-	<!-- <import resource="classpath*:spring/beans_mybatis_datasource.xml" /> -->
+	<import resource="classpath*:spring/beans_mybatis_datasource.xml" />
 	<!-- <import resource="classpath*:spring/beans_redis_datasource.xml" /> -->
 
 

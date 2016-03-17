@@ -18,6 +18,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.doer</groupId>
+			<artifactId>moodle-mybatis</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.doer</groupId>
 			<artifactId>moodle-orm</artifactId>
 			<version>${project.version}</version>
 		</dependency>
