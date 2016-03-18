@@ -21,11 +21,7 @@ import com.doer.moodle.mybatis.page.PageParam;
 
 /**
  * 
- * @描述: 数据访问层基础支撑类.
- * @作者: WuShuicheng .
- * @创建时间: 2013-7-22,下午4:52:52 .
- * @版本: 1.0 .
- * @param <T>
+ * 数据访问层基础支撑类.
  */
 public abstract class BaseDaoImpl<T extends BaseEntity> extends SqlSessionDaoSupport implements IBaseDao<T> {
 

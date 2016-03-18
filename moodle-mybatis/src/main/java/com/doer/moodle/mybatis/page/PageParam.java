@@ -4,10 +4,7 @@ import java.io.Serializable;
 
 /**
  * 
- * @描述: 分页参数传递工具类 .
- * @作者: WuShuicheng .
- * @创建时间: 2013-9-4,下午2:23:47 .
- * @版本: 1.0 .
+ * 分页参数传递工具类 .
  */
 public class PageParam implements Serializable{
 	

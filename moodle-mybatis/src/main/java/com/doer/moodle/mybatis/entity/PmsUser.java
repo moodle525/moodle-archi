@@ -7,9 +7,6 @@ import com.doer.moodle.mybatis.page.BaseEntity;
 
 /**
  * 权限管理-用户
- * 
- * @author xiehui
- * 
  */
 public class PmsUser extends BaseEntity {
 

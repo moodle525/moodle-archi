@@ -5,10 +5,7 @@ import java.util.Date;
 
 /**
  * 
- * @描述: 基础实体类，包含各实体公用属性 .
- * @作者: WuShuicheng .
- * @创建时间: 2013-7-28,下午8:53:52 .
- * @版本: 1.0 .
+ * 基础实体类，包含各实体公用属性 .
  */
 public class BaseEntity implements Serializable {
 
