@@ -101,7 +101,8 @@ public interface IBaseDao<T> {
 	 */
 	public T getBy(Map<String, Object> paramMap);
 
-	public SqlSessionTemplate getSessionTemplate();
 	
 	public SqlSession getSqlSession();
+	
+	public SqlSessionTemplate getSqlSessionTemplate();
 }

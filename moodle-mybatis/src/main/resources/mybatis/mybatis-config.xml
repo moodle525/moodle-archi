@@ -34,12 +34,13 @@
 		<setting name="jdbcTypeForNull" value="OTHER" />
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
 	</settings>
-	
+
 	<!-- 类型别名是为 Java类型命名一个短的名字。 它只和 XML配置有关,只用来减少类完全 限定名的多余部分 -->
 	<typeAliases>
 		<typeAlias alias="PmsUser" type="com.doer.moodle.mybatis.entity.PmsUser" />
+	</typeAliases>
 	<mappers>
-		<mapper resource="mybatis/mapper/PmsUser.Mapper.xml" />	
+		<mapper resource="mybatis/mapper/PmsUser.Mapper.xml" />
 	</mappers>
 
 </configuration>

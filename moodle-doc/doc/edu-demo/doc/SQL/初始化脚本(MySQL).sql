@@ -1,9 +1,9 @@
-drop table if exists edu_edmo_pms_user;
+drop table if exists pms_user;
 
 /*==============================================================*/
 /* Table: edu_edmo_pms_user                                      */
 /*==============================================================*/
-create table edu_edmo_pms_user
+create table pms_user
 (
    id                   bigint(20) not null auto_increment comment 'ID',
    version              int not null default 0 comment 'version',
@@ -25,8 +25,8 @@ create table edu_edmo_pms_user
    unique key AK_Key_2 (user_no)
 );
 
-alter table edu_edmo_pms_user comment '用户信息表';
+alter table pms_user comment '用户信息表';
 
 ## 用户的初始化数据(密码123456)
-insert into edu_edmo_pms_user (id, user_no, user_pwd, remark, user_name, mobile_no, status, user_type, last_login_time, is_changed_pwd, pwd_error_count, pwd_error_time) values 
+insert into pms_user (id, user_no, user_pwd, remark, user_name, mobile_no, status, user_type, last_login_time, is_changed_pwd, pwd_error_count, pwd_error_time) values 
 (1, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', '超级管理员', '超级管理员', '13800138000', '100', '1', null, 0, 0, null);
