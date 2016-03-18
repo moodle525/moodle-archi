@@ -27,17 +27,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>2.2.2</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid</artifactId>
-			<version>0.2.23</version>
-		</dependency>
-		<dependency>
 			<groupId>com.doer</groupId>
 			<artifactId>moodle-common</artifactId>
 			<version>${project.version}</version>

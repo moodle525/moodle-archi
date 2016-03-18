@@ -4,11 +4,13 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   
     http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
 	<display-name>moodle</display-name>
-	
+
 	<listener>
 		<listener-class>com.doer.moodle.image.captcha.impl.CaptchaContextListener</listener-class>
 	</listener>
-	
+
+
+	<!-- 验证码servlet -->
 	<servlet>
 		<servlet-name>captcha</servlet-name>
 		<servlet-class>com.doer.moodle.image.captcha.impl.CaptchaServlet</servlet-class>
@@ -16,6 +18,29 @@
 	<servlet-mapping>
 		<servlet-name>captcha</servlet-name>
 		<url-pattern>/captcha</url-pattern>
+	</servlet-mapping>
+
+	<!--druid sql 监控 -->
+	<filter>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
 
 	<!-- SpringMVC DispatcherServlet -->

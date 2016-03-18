@@ -13,7 +13,7 @@ import com.doer.moodle.mybatis.entity.PmsUser;
  * @创建时间: 2013-7-22,下午5:51:47 .
  * @版本: 1.0 .
  */
-@Repository("pmsUserDao")
+//@Repository("pmsUserDao")
 public class PmsUserDaoImpl extends BaseDaoImpl<PmsUser> implements IPmsUserDao {
 
 	/**

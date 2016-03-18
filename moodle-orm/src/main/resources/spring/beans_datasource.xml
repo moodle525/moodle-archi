@@ -17,26 +17,26 @@
            http://www.springframework.org/schema/cache
            http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-	<!-- 配置dbcp数据源 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close">
-		<property name="driverClassName" value="${jdbc.driverClassName}" />
+	<!-- 基于Druid数据库链接池的数据源配置 -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
-		<!-- 队列中的最小等待数 -->
-		<property name="minIdle" value="${jdbc.minIdle}"></property>
-		<!-- 队列中的最大等待数 -->
-		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
-		<!-- 最长等待时间，单位毫秒 -->
-		<property name="maxWait" value="${jdbc.maxWait}"></property>
-		<!-- 最大活跃数 -->
-		<property name="maxActive" value="${jdbc.maxActive}"></property>
-		<property name="initialSize" value="${jdbc.initialSize}"></property>
-		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"></property>
-		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"></property>
-		<property name="testWhileIdle" value="true"></property>
-		<property name="validationQuery" value="select 1 from dual"></property>
+		<!-- 通常来说，只需要修改initialSize、minIdle、maxActive -->
+		<property name="initialSize" value="${jdbc.initialSize}" />
+		<property name="minIdle" value="${jdbc.minIdle}" />
+		<property name="maxActive" value="${jdbc.maxActive}" />
+		<property name="testWhileIdle" value="false" />
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${jdbc.maxWait}" />
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+		<!--config用于解密码 -->
+		<property name="filters" value="stat,config" />
+		<property name="connectionProperties" value="config.decrypt=true" />
 	</bean>
 
 	<!-- 事务配置 -->
@@ -73,6 +73,21 @@
 		</property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<bean id="druid-stat-interceptor"
+		class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor"></bean>
+	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+		scope="prototype">
+		<property name="patterns">
+			<list>
+				<value>com.doer.moodle.orm.dao.impl.*</value>
+			</list>
+		</property>
+	</bean>
+	<aop:config>
+		<aop:advisor advice-ref="druid-stat-interceptor"
+			pointcut-ref="druid-stat-pointcut" />
+	</aop:config>
 
 	<!-- cache manager -->
 	<!-- <cache:annotation-driven /> <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager"> 
