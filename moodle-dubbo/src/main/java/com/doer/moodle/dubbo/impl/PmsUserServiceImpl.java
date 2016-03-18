@@ -6,7 +6,6 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.dubbo.config.annotation.Service;
 import com.doer.moodle.common.page.PageBean;
 import com.doer.moodle.common.page.PageParam;
 import com.doer.moodle.dubbo.interfaces.IPmsUserService;
@@ -14,11 +13,10 @@ import com.doer.moodle.dubbo.interfaces.entity.PmsUserInfo;
 import com.doer.moodle.mybatis.dao.intf.IPmsUserDao;
 import com.doer.moodle.mybatis.entity.PmsUser;
 
-@Service
 @Transactional(rollbackFor = Exception.class)
 public class PmsUserServiceImpl implements IPmsUserService {
 	@Autowired
-	private IPmsUserDao pmsUserDao;
+	private IPmsUserDao iPmsUserDao;
 
 	/**
 	 * 保存用户信息.
@@ -29,7 +27,7 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	public void create(PmsUserInfo pmsUser) {
 		PmsUser user = new PmsUser();
 		propertiesCopy(user, pmsUser);
-		pmsUserDao.insert(user);
+		iPmsUserDao.insert(user);
 	}
 
 	/**
@@ -40,7 +38,7 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	 */
 	@Override
 	public PmsUserInfo getById(Long userId) {
-		PmsUser user = pmsUserDao.getById(userId);
+		PmsUser user = iPmsUserDao.getById(userId);
 		PmsUserInfo pmsUserInfo = new PmsUserInfo();
 		propertiesCopy(pmsUserInfo, user);
 		return pmsUserInfo;
@@ -51,7 +49,7 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	 */
 	@Override
 	public PmsUserInfo findUserByUserNo(String userNo) {
-		PmsUser user = pmsUserDao.findByUserNo(userNo);
+		PmsUser user = iPmsUserDao.findByUserNo(userNo);
 		PmsUserInfo pmsUserInfo = new PmsUserInfo();
 		propertiesCopy(pmsUserInfo, user);
 		return pmsUserInfo;
@@ -65,12 +63,12 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	 */
 	@Override
 	public void deleteUserById(long userId) {
-		PmsUser pmsUser = pmsUserDao.getById(userId);
+		PmsUser pmsUser = iPmsUserDao.getById(userId);
 		if (pmsUser != null) {
 			if ("1".equals(pmsUser.getUserType())) {
 				throw new RuntimeException("【" + pmsUser.getUserNo() + "】为超级管理员，不能删除！");
 			}
-			pmsUserDao.deleteById(pmsUser.getId());
+			iPmsUserDao.deleteById(pmsUser.getId());
 		}
 	}
 
@@ -83,7 +81,7 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	public void update(PmsUserInfo pmsUserInfo) {
 		PmsUser user = new PmsUser();
 		propertiesCopy(user, pmsUserInfo);
-		pmsUserDao.update(user);
+		iPmsUserDao.update(user);
 	}
 
 	/**
@@ -95,11 +93,11 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	 */
 	@Override
 	public void updateUserPwd(Long userId, String newPwd, boolean isTrue) {
-		PmsUser pmsUser = pmsUserDao.getById(userId);
+		PmsUser pmsUser = iPmsUserDao.getById(userId);
 		pmsUser.setUserPwd(newPwd);
 		pmsUser.setPwdErrorCount(0); // 密码错误次数重置为0
 		pmsUser.setIsChangedPwd(isTrue); // 设置密码为已修改过
-		pmsUserDao.update(pmsUser);
+		iPmsUserDao.update(pmsUser);
 	}
 
 	/**
@@ -111,7 +109,7 @@ public class PmsUserServiceImpl implements IPmsUserService {
 	 */
 	@Override
 	public PageBean listPage(PageParam pageParam, Map<String, Object> paramMap) {
-		return pmsUserDao.listPage(pageParam, paramMap);
+		return iPmsUserDao.listPage(pageParam, paramMap);
 	}
 
 	public void propertiesCopy(Object dest, Object orig) {
