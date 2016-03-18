@@ -1,3 +1,4 @@
 #Dubbo Registry Cache
-#Fri Mar 18 16:42:26 CST 2016
+#Fri Mar 18 17:50:21 CST 2016
 com.doer.moodle.interfaces.IUser=empty\://10.158.55.113\:20880/com.doer.moodle.interfaces.IUser?anyhost\=true&application\=moodle_dubbo_service&category\=configurators&check\=false&default.retries\=2&default.threads\=1000&default.timeout\=20000&dubbo\=2.5.3&interface\=com.doer.moodle.interfaces.IUser&methods\=serach,saveUser,getUsers&pid\=9828&side\=provider&timestamp\=1458290545762
+com.doer.moodle.dubbo.interfaces.IPmsUserService=empty\://10.158.55.113\:20880/com.doer.moodle.dubbo.interfaces.IPmsUserService?anyhost\=true&application\=moodle_dubbo_service&category\=configurators&check\=false&default.retries\=2&default.threads\=1000&default.timeout\=20000&dubbo\=2.5.3&interface\=com.doer.moodle.dubbo.interfaces.IPmsUserService&methods\=updateUserPwd,update,listPage,findUserByUserNo,getById,deleteUserById,create&pid\=10700&side\=provider&timestamp\=1458294620608

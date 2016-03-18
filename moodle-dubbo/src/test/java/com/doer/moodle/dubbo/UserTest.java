@@ -9,8 +9,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.doer.moodle.interfaces.IUser;
-import com.doer.moodle.interfaces.entity.UserInfo;
+import com.doer.moodle.dubbo.interfaces.IUser;
+import com.doer.moodle.dubbo.interfaces.entity.UserInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"/spring/beans.xml","/dubbo/consumer.xml" })

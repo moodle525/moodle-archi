@@ -14,7 +14,7 @@
 	<dubbo:provider timeout="${moodle.provider.timeout}"
 		retries="2" threads="1000" />
 
-	<bean id="user" class="com.doer.moodle.dubbo.impl.Usermpl" />
-	<dubbo:service interface="com.doer.moodle.interfaces.IUser"
-		ref="user" />
+	<bean id="pmsUserService" class="com.doer.moodle.dubbo.impl.PmsUserServiceImpl" />
+	<dubbo:service interface="com.doer.moodle.dubbo.interfaces.IPmsUserService"
+		ref="pmsUserService" />
 </beans>

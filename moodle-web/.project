@@ -3,9 +3,10 @@
 	<name>moodle-web</name>
 	<comment></comment>
 	<projects>
-		<project>moodle-interfaces</project>
 		<project>moodle-common</project>
 		<project>moodle-image</project>
+		<project>moodle-interfaces</project>
+		<project>moodle-dubbo-interfaces</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

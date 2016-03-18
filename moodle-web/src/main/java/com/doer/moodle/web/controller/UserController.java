@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.doer.moodle.common.entity.R;
-import com.doer.moodle.interfaces.IUser;
-import com.doer.moodle.interfaces.entity.UserInfo;
+import com.doer.moodle.dubbo.interfaces.IUser;
+import com.doer.moodle.dubbo.interfaces.entity.UserInfo;
 
 @Controller
 @RequestMapping(value = "/user")

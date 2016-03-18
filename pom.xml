@@ -13,12 +13,13 @@
 		<module>moodle-dubbo</module>
 		<module>moodle-web</module>
 		<module>moodle-orm</module>
-		<module>moodle-interfaces</module>
+		<module>moodle-doc</module>
 		<module>moodle-image</module>
 		<module>moodle-cache</module>
 		<module>moodle-file</module>
 		<module>moodle-mybatis</module>
 		<module>moodle-test</module>
+		<module>moodle-dubbo-interfaces</module>
 	</modules>
 
 	<properties>

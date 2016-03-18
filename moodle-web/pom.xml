@@ -29,7 +29,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.doer</groupId>
-			<artifactId>moodle-interfaces</artifactId>
+			<artifactId>moodle-dubbo-interfaces</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
