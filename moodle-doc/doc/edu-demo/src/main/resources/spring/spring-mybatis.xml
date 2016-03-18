@@ -28,7 +28,7 @@
 		<property name="timeBetweenEvictionRunsMillis" value="60000" />
 		<!-- 解密密码必须要配置的项 -->
 		<property name="filters" value="config" />
-		<property name="connectionProperties" value="config.decrypt=true" />
+		<!-- <property name="connectionProperties" value="config.decrypt=true" /> -->
 	</bean>
 	<!-- 将数据源映射到sqlSessionFactory中 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

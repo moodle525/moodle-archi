@@ -1,8 +1,8 @@
-package com.doer.moodle.mybatis.dao.entity;
+package com.doer.moodle.mybatis.entity;
 
 import java.util.Date;
 
-import page.BaseEntity;
+import com.doer.moodle.mybatis.page.BaseEntity;
 
 
 /**

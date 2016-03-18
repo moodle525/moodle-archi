@@ -12,10 +12,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.doer.moodle.common.exceptions.BizException;
-
-import page.BaseEntity;
-import page.PageBean;
-import page.PageParam;
+import com.doer.moodle.mybatis.page.BaseEntity;
+import com.doer.moodle.mybatis.page.PageBean;
+import com.doer.moodle.mybatis.page.PageParam;
 
 /**
  * 

@@ -6,8 +6,8 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 
-import page.PageBean;
-import page.PageParam;
+import com.doer.moodle.mybatis.page.PageBean;
+import com.doer.moodle.mybatis.page.PageParam;
 
 
 /**
