@@ -3,8 +3,10 @@ package com.doer.moodle.dubbo.interfaces.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.doer.moodle.common.page.BaseEntity;
+
 @SuppressWarnings("serial")
-public class PmsUserInfo implements Serializable {
+public class PmsUserInfo extends BaseEntity implements Serializable {
 	private String userNo;// 用户帐号(当用户类型为“子帐号”时使用，否则为空)
 	private String mainUserId;// 主账号ID
 	private String userPwd; // 登录密码

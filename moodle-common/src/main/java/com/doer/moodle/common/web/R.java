@@ -1,4 +1,4 @@
-package com.doer.moodle.common.entity;
+package com.doer.moodle.common.web;
 
 import java.io.Serializable;
 
