@@ -5,7 +5,6 @@ public class HeapParamTest {
 		p("Xmx=" + byte2m(Runtime.getRuntime().maxMemory()));
 		p("free mem="+ byte2m(Runtime.getRuntime().freeMemory()));
 		p("total mem="+byte2m(Runtime.getRuntime().totalMemory()));
-		byte[] b = new byte[20*1024*1024];
 		p("Xmx=" + byte2m(Runtime.getRuntime().maxMemory()));
 		p("free mem="+ byte2m(Runtime.getRuntime().freeMemory()));
 		p("total mem="+byte2m(Runtime.getRuntime().totalMemory()));
