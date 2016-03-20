@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<name>moodle</name>
 	<url>http://maven.apache.org</url>
-	<modules>
+	<modules> 
 		<module>moodle-common</module>
 		<module>moodle-dubbo</module>
 		<module>moodle-web</module>
