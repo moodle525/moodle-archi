@@ -3,7 +3,7 @@ package com.doer.moodle.dubbo.interfaces.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.doer.moodle.common.page.BaseEntity;
+import com.doer.moodle.common.dao.page.BaseEntity;
 
 @SuppressWarnings("serial")
 public class PmsUserInfo extends BaseEntity implements Serializable {

@@ -1,4 +1,4 @@
-package com.doer.moodle.common.page;
+package com.doer.moodle.common.dao.page;
 
 import java.io.Serializable;
 

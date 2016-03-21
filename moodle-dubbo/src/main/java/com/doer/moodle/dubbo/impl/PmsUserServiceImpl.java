@@ -6,8 +6,8 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.doer.moodle.common.page.PageBean;
-import com.doer.moodle.common.page.PageParam;
+import com.doer.moodle.common.dao.page.PageBean;
+import com.doer.moodle.common.dao.page.PageParam;
 import com.doer.moodle.dubbo.interfaces.IPmsUserService;
 import com.doer.moodle.dubbo.interfaces.entity.PmsUserInfo;
 import com.doer.moodle.mybatis.dao.intf.IPmsUserDao;

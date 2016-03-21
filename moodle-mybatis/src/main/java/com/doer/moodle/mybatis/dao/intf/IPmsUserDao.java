@@ -1,6 +1,6 @@
 package com.doer.moodle.mybatis.dao.intf;
 
-import com.doer.moodle.mybatis.dao.IBaseDao;
+import com.doer.moodle.common.dao.mybatis.IBaseDao;
 import com.doer.moodle.mybatis.entity.PmsUser;
 
 /**

@@ -2,7 +2,7 @@ package com.doer.moodle.mybatis.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.doer.moodle.mybatis.dao.BaseDaoImpl;
+import com.doer.moodle.common.dao.mybatis.BaseDaoImpl;
 import com.doer.moodle.mybatis.dao.intf.IPmsUserDao;
 import com.doer.moodle.mybatis.entity.PmsUser;
 

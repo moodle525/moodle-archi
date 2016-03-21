@@ -2,7 +2,7 @@ package com.doer.moodle.mybatis.entity;
 
 import java.util.Date;
 
-import com.doer.moodle.common.page.BaseEntity;
+import com.doer.moodle.common.dao.page.BaseEntity;
 
 
 /**
