@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<localRepository>/root/maven-3.0.5/.m2/repository</localRepository>
+	<interactiveMode>true</interactiveMode>
+    <offline>false</offline>
+    <pluginGroups>
+        <pluginGroup>org.mortbay.jetty</pluginGroup>
+        <pluginGroup>org.jenkins-ci.tools</pluginGroup>
+    </pluginGroups>
+	
+	<!--配置权限,使用默认用户-->
+	<servers>
+		<server>
+			<id>nexus-releases</id>
+			<username>deployment</username>
+			<password>deployment123</password>
+		</server>
+		<server> 
+			<id>nexus-snapshots</id>
+			<username>deployment</username>
+			<password>deployment123</password>
+		</server>
+	</servers>
+
+    <mirrors>
+
+    </mirrors>
+
+	<profiles>
+		<profile>
+			<id>edu</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<jdk>1.6</jdk>
+			</activation>
+			<repositories>
+				<!-- 私有库地址-->
+				<repository>
+					<id>nexus</id>
+					<url>http://localhost:8081/nexus/content/groups/public/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>      
+			<pluginRepositories>
+				<!--插件库地址-->
+				<pluginRepository>
+					<id>nexus</id>
+					<url>http://localhost:8081/nexus/content/groups/public/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+				   </snapshots>
+				</pluginRepository>
+			</pluginRepositories>
+		</profile>
+		
+		<profile>
+			<id>sonar</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<!-- Example for MySQL-->
+				<sonar.jdbc.url>
+					jdbc:mysql://localhost:3306/sonarqube?useUnicode=true&amp;characterEncoding=utf8
+				</sonar.jdbc.url>
+				<sonar.jdbc.username>root</sonar.jdbc.username>
+				<sonar.jdbc.password>wusc.123</sonar.jdbc.password>
+
+				<!-- Optional URL to server. Default value is http://localhost:9000 -->
+				<sonar.host.url>
+					http://localhost:9090/sonarqube
+				</sonar.host.url>
+			</properties>
+		</profile>
+		
+	</profiles>
+	
+	<!--激活profile-->
+	<activeProfiles>
+		<activeProfile>edu</activeProfile>
+	</activeProfiles>
+	
+</settings>
