@@ -8,7 +8,10 @@
 		<artifactId>moodle</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
+	
 	<artifactId>moodle-web</artifactId>
+	<packaging>war</packaging>
+	
 	<name>moodle-web</name>
 	<url>http://maven.apache.org</url>
 	<properties>

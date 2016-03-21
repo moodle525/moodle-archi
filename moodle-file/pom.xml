@@ -5,11 +5,12 @@
   <parent>
     <groupId>com.doer</groupId>
     <artifactId>moodle</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${project.version}</version>
   </parent>
-  <groupId>com.doer</groupId>
+  
   <artifactId>moodle-file</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
   <name>moodle-file</name>
   <url>http://maven.apache.org</url>
   <properties>

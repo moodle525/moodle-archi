@@ -6,9 +6,12 @@
 	<parent>
 		<groupId>com.doer</groupId>
 		<artifactId>moodle</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${project.version}</version>
 	</parent>
+	
 	<artifactId>moodle-image</artifactId>
+	<packaging>jar</packaging>
+	
 	<name>moodle-image</name>
 	<url>http://maven.apache.org</url>
 	<properties>

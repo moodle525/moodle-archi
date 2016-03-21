@@ -167,3 +167,63 @@
 [INFO ][20160318 16:29:58,473][TransactionalTestExecutionListener:298] Rolled back transaction after test execution for test context [DefaultTestContext@5c6c5317 testClass = HibernateDaoTest, testInstance = com.doer.moodle.orm.HibernateDaoTest@4bc33a68, testMethod = test1@HibernateDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@7e2fa8b3 testClass = HibernateDaoTest, locations = '{classpath:/spring/beans.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
 [INFO ][20160318 16:29:58,475][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@2bc63b78: startup date [Fri Mar 18 16:29:56 CST 2016]; root of context hierarchy
 [INFO ][20160318 16:29:58,482][DruidDataSource:1253] {dataSource-1} closed
+[INFO ][20160321 14:25:42,398][XmlBeanDefinitionReader:316] Loading XML bean definitions from class path resource [spring/beans.xml]
+[INFO ][20160321 14:25:42,793][XmlBeanDefinitionReader:316] Loading XML bean definitions from URL [file:/C:/000fold/workspace/frame/moodle/moodle-orm/target/classes/spring/beans_datasource.xml]
+[INFO ][20160321 14:25:42,862][AbstractApplicationContext:513] Refreshing org.springframework.context.support.GenericApplicationContext@e11b309: startup date [Mon Mar 21 14:25:42 CST 2016]; root of context hierarchy
+[INFO ][20160321 14:25:43,007][PropertiesLoaderSupport:172] Loading properties file from URL [file:/C:/000fold/workspace/frame/moodle/moodle-orm/target/classes/beans.properties]
+[INFO ][20160321 14:25:44,400][DruidDataSource:642] {dataSource-1} inited
+[INFO ][20160321 14:25:44,644][Version:37] HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+[INFO ][20160321 14:25:44,649][Version:41] HHH000412: Hibernate Core {4.1.10.Final}
+[INFO ][20160321 14:25:44,651][Environment:239] HHH000206: hibernate.properties not found
+[INFO ][20160321 14:25:44,653][Environment:342] HHH000021: Bytecode provider name : javassist
+[INFO ][20160321 14:25:44,931][Dialect:127] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[INFO ][20160321 14:25:45,011][TransactionFactoryInitiator:68] HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO ][20160321 14:25:45,022][ASTQueryTranslatorFactory:48] HHH000397: Using ASTQueryTranslatorFactory
+[INFO ][20160321 14:25:45,488][HibernateTransactionManager:339] Using DataSource [{
+	CreateTime:"2016-03-21 14:25:43",
+	ActiveCount:0,
+	PoolingCount:3,
+	CreateCount:3,
+	DestroyCount:0,
+	CloseCount:1,
+	ConnectCount:1,
+	Connections:[
+		{ID:1489817635, ConnectTime:"2016-03-21 14:25:44", UseCount:0, LastActiveTime:"2016-03-21 14:25:44"},
+		{ID:1853151072, ConnectTime:"2016-03-21 14:25:44", UseCount:0, LastActiveTime:"2016-03-21 14:25:44"},
+		{ID:954734663, ConnectTime:"2016-03-21 14:25:44", UseCount:1, LastActiveTime:"2016-03-21 14:25:44"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO ][20160321 14:25:45,605][TransactionalTestExecutionListener:276] Began transaction (1) for test context [DefaultTestContext@31976629 testClass = HibernateDaoTest, testInstance = com.doer.moodle.orm.HibernateDaoTest@4ab4272e, testMethod = test1@HibernateDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@79786352 testClass = HibernateDaoTest, locations = '{classpath:/spring/beans.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate4.HibernateTransactionManager@4ec0dacb]; rollback [true]
+[INFO ][20160321 14:25:46,572][TransactionalTestExecutionListener:298] Rolled back transaction after test execution for test context [DefaultTestContext@31976629 testClass = HibernateDaoTest, testInstance = com.doer.moodle.orm.HibernateDaoTest@4ab4272e, testMethod = test1@HibernateDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@79786352 testClass = HibernateDaoTest, locations = '{classpath:/spring/beans.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+[INFO ][20160321 14:25:46,576][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@e11b309: startup date [Mon Mar 21 14:25:42 CST 2016]; root of context hierarchy
+[INFO ][20160321 14:25:46,592][DruidDataSource:1253] {dataSource-1} closed
+[INFO ][20160321 14:35:32,456][XmlBeanDefinitionReader:316] Loading XML bean definitions from class path resource [spring/beans.xml]
+[INFO ][20160321 14:35:32,696][XmlBeanDefinitionReader:316] Loading XML bean definitions from URL [file:/C:/000fold/workspace/frame/moodle/moodle-orm/target/classes/spring/beans_datasource.xml]
+[INFO ][20160321 14:35:32,768][AbstractApplicationContext:513] Refreshing org.springframework.context.support.GenericApplicationContext@e11b309: startup date [Mon Mar 21 14:35:32 CST 2016]; root of context hierarchy
+[INFO ][20160321 14:35:32,887][PropertiesLoaderSupport:172] Loading properties file from URL [file:/C:/000fold/workspace/frame/moodle/moodle-orm/target/classes/beans.properties]
+[INFO ][20160321 14:35:33,497][DruidDataSource:642] {dataSource-1} inited
+[INFO ][20160321 14:35:33,661][Version:37] HCANN000001: Hibernate Commons Annotations {4.0.1.Final}
+[INFO ][20160321 14:35:33,667][Version:41] HHH000412: Hibernate Core {4.1.10.Final}
+[INFO ][20160321 14:35:33,669][Environment:239] HHH000206: hibernate.properties not found
+[INFO ][20160321 14:35:33,670][Environment:342] HHH000021: Bytecode provider name : javassist
+[INFO ][20160321 14:35:33,853][Dialect:127] HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+[INFO ][20160321 14:35:33,876][TransactionFactoryInitiator:68] HHH000399: Using default transaction strategy (direct JDBC transactions)
+[INFO ][20160321 14:35:33,881][ASTQueryTranslatorFactory:48] HHH000397: Using ASTQueryTranslatorFactory
+[INFO ][20160321 14:35:34,198][HibernateTransactionManager:339] Using DataSource [{
+	CreateTime:"2016-03-21 14:35:33",
+	ActiveCount:0,
+	PoolingCount:3,
+	CreateCount:3,
+	DestroyCount:0,
+	CloseCount:1,
+	ConnectCount:1,
+	Connections:[
+		{ID:1853151072, ConnectTime:"2016-03-21 14:35:33", UseCount:0, LastActiveTime:"2016-03-21 14:35:33"},
+		{ID:954734663, ConnectTime:"2016-03-21 14:35:33", UseCount:0, LastActiveTime:"2016-03-21 14:35:33"},
+		{ID:227670657, ConnectTime:"2016-03-21 14:35:33", UseCount:1, LastActiveTime:"2016-03-21 14:35:33"}
+	]
+}] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO ][20160321 14:35:34,288][TransactionalTestExecutionListener:276] Began transaction (1) for test context [DefaultTestContext@4ab4272e testClass = HibernateDaoTest, testInstance = com.doer.moodle.orm.HibernateDaoTest@79786352, testMethod = test1@HibernateDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@4ec0dacb testClass = HibernateDaoTest, locations = '{classpath:/spring/beans.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]; transaction manager [org.springframework.orm.hibernate4.HibernateTransactionManager@575c6dd1]; rollback [true]
+[INFO ][20160321 14:35:34,509][TransactionalTestExecutionListener:298] Rolled back transaction after test execution for test context [DefaultTestContext@4ab4272e testClass = HibernateDaoTest, testInstance = com.doer.moodle.orm.HibernateDaoTest@79786352, testMethod = test1@HibernateDaoTest, testException = [null], mergedContextConfiguration = [MergedContextConfiguration@4ec0dacb testClass = HibernateDaoTest, locations = '{classpath:/spring/beans.xml}', classes = '{}', contextInitializerClasses = '[]', activeProfiles = '{}', contextLoader = 'org.springframework.test.context.support.DelegatingSmartContextLoader', parent = [null]]]
+[INFO ][20160321 14:35:34,512][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@e11b309: startup date [Mon Mar 21 14:35:32 CST 2016]; root of context hierarchy
+[INFO ][20160321 14:35:34,519][DruidDataSource:1253] {dataSource-1} closed

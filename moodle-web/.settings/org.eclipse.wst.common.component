@@ -4,13 +4,13 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <dependent-module archiveName="moodle-common.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-common/moodle-common">
+        <dependent-module archiveName="moodle-dubbo-interfaces-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-dubbo-interfaces/moodle-dubbo-interfaces">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="moodle-image.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-image/moodle-image">
+        <dependent-module archiveName="moodle-common-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-common/moodle-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="moodle-dubbo-interfaces.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-dubbo-interfaces/moodle-dubbo-interfaces">
+        <dependent-module archiveName="moodle-image-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/moodle-image/moodle-image">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/moodle-web/target/classes"/>
