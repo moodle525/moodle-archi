@@ -20,7 +20,8 @@
 	<context:annotation-config />
 	<task:annotation-driven />
 
-	<context:property-placeholder location="classpath*:beans.properties" />
+<!-- 	<context:property-placeholder location="classpath*:beans.properties" /> -->
+	<bean class="com.doer.moodle.dubbo.Configuration"/>
 
 	<!--proxy-target-class="true"强制使用cglib代理 如果为false则spring会自动选择 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />

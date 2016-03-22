@@ -26,16 +26,16 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 		<!-- 通常来说，只需要修改initialSize、minIdle、maxActive -->
-		<property name="initialSize" value="${jdbc.initialSize}" />
+		<!-- <property name="initialSize" value="${jdbc.initialSize}" />
 		<property name="minIdle" value="${jdbc.minIdle}" />
 		<property name="maxActive" value="${jdbc.maxActive}" />
 		<property name="testWhileIdle" value="false" />
-		<!-- 配置获取连接等待超时的时间 -->
+		配置获取连接等待超时的时间
 		<property name="maxWait" value="${jdbc.maxWait}" />
-		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		配置一个连接在池中最小生存的时间，单位是毫秒
 		<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
-		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
-		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+		配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" /> -->
 		<!--config用于解密码 -->
 		<property name="filters" value="stat,config" />
 		<property name="connectionProperties" value="config.decrypt=true" />

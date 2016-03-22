@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.doer.moodle.common.dao.hibernate.BaseDaoImpl;
 import com.doer.moodle.orm.dao.intf.IUserDao;
 import com.doer.moodle.orm.entity.User;
 
