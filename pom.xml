@@ -35,7 +35,7 @@
 		<repository>
 			<id>central</id>
 			<name>Central</name>
-			<url>http://127.0.0.1:8081/nexus/content/repositories/central/</url>
+			<url>http://10.211.55.8:8081/nexus/content/repositories/central/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -44,12 +44,12 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://127.0.0.1:8081/nexus/content/repositories/releases/</url>
+			<url>http://10.211.55.8:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://127.0.0.1:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://10.211.55.8:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -93,7 +93,7 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework</groupId>
+			<groupId>org.springframework</groupId> 
 			<artifactId>spring-context-support</artifactId>
 		</dependency>
 		<dependency>
@@ -208,7 +208,7 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>${commons.dbcp.version}</version>
 		</dependency>
-		<dependency>
+		<dependency> 
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql.version}</version>
