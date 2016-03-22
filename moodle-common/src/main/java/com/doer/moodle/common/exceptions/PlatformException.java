@@ -1,6 +1,6 @@
 package com.doer.moodle.common.exceptions;
 
-public class PlatformException extends Exception {
+public class PlatformException extends RuntimeException {
 	private static final long serialVersionUID = -8886495803406807620L;
 	private String errorCode;
 	private String errorDetail;
