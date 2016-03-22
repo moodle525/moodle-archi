@@ -1,73 +1,87 @@
 package com.doer.moodle.config.zk;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.log4j.Logger;
 
 import com.doer.moodle.common.exceptions.PlatformException;
 
 public class ZkClient {
+	private static final Logger log = Logger.getLogger(ZkClient.class);
+
 	private CuratorFramework curator;
 	private String zkAddress;
 	private int timeOut;
 	private int sessionTimeOut;
-
-	public ZkClient(String zkAddess) throws Exception {
-		this(zkAddess, 0, 0, null);
-		this.zkAddress = zkAddess;
+	
+	public ZkClient() {
 	}
 
-	public ZkClient(String zkAddress, int sessionTimeOut, int timeOut) throws Exception {
-		this(zkAddress, sessionTimeOut, timeOut, null);
-		this.zkAddress = zkAddress;
-		this.sessionTimeOut = sessionTimeOut;
-		this.timeOut = timeOut;
-	}
-
-	public ZkClient(String zkAddress, int sessionTimeOut, int timeOut, RetryPolicy retryPolicy) throws Exception {
+	public void init() {
 		if (StringUtils.isBlank(zkAddress))
 			throw new PlatformException("0", "zk address is not be null");
-		this.zkAddress = zkAddress;
 		if (sessionTimeOut <= 0)
 			sessionTimeOut = 2000;
-		this.sessionTimeOut = sessionTimeOut;
 		if (timeOut <= 0)
 			timeOut = 2000;
-		this.timeOut = timeOut;
-		if (retryPolicy == null)
-			retryPolicy = new ExponentialBackoffRetry(1000, 3);
-		curator = CuratorFrameworkFactory.newClient(zkAddress, sessionTimeOut, timeOut, retryPolicy);
+		curator = CuratorFrameworkFactory
+				.builder()
+				.connectString(zkAddress)
+				.sessionTimeoutMs(sessionTimeOut)
+				.connectionTimeoutMs(timeOut)
+				.canBeReadOnly(false)
+				.retryPolicy(
+						new ExponentialBackoffRetry(1000, Integer.MAX_VALUE))
+				.build();
 		curator.start();
-	}
-	
-	public String forPath(String path,byte[] data) throws Exception{
-		return curator.create().forPath(path, data);
-	}
-	
-	public String forPath(String path) throws Exception{
-		return forPath(path,"");
-	}
-	
-	public String forPath(String path,String data) throws Exception{
-		return forPath(path,data.getBytes());
-	}
-	
-	public void delete(String path){
-		curator.delete();
 	}
 
 	public void close() {
 		curator.close();
 	}
 
-	public CuratorFramework getCurator() {
-		return curator;
+	public String forPath(String path, String data) {
+		String _path = null;
+		try {
+			_path = curator.create().creatingParentsIfNeeded().forPath(path, data.getBytes());
+		} catch (Exception e) {
+			log.error(e);
+			throw new PlatformException("0", e);
+		}
+		return _path;
 	}
 
-	public void setCurator(CuratorFramework curator) {
-		this.curator = curator;
+	public String forPath(String path) {
+		return forPath(path, "");
+	}
+
+	public String getData(String path) {
+		byte[] data = null;
+		try {
+			data = curator.getData().forPath(path);
+		} catch (Exception e) {
+			log.error(e);
+			throw new PlatformException("0", e);
+		}
+		if (data == null)
+			return null;
+		else
+			return new String(data);
+	}
+
+	public void setData(String path, String data) {
+		try {
+			curator.setData().forPath(path, data.getBytes());
+		} catch (Exception e) {
+			log.error(e);
+			throw new PlatformException("0", e);
+		}
+	}
+
+	public void delete(String path) {
+		curator.delete();
 	}
 
 	public String getZkAddress() {
@@ -92,6 +106,14 @@ public class ZkClient {
 
 	public void setSessionTimeOut(int sessionTimeOut) {
 		this.sessionTimeOut = sessionTimeOut;
+	}
+
+	public CuratorFramework getCurator() {
+		return curator;
+	}
+
+	public void setCurator(CuratorFramework curator) {
+		this.curator = curator;
 	}
 
 }
