@@ -14,13 +14,12 @@
 		<module>moodle-dubbo</module>
 		<module>moodle-web</module>
 		<module>moodle-orm</module>
-		<module>moodle-doc</module>
 		<module>moodle-image</module>
 		<module>moodle-cache</module>
-		<module>moodle-file</module>
 		<module>moodle-mybatis</module>
 		<module>moodle-test</module>
 		<module>moodle-dubbo-interfaces</module>
+		<module>moodle-config</module>
 	</modules>
 
 	<properties>
@@ -36,7 +35,7 @@
 		<repository>
 			<id>central</id>
 			<name>Central</name>
-			<url>http://10.211.55.8:8081/nexus/content/repositories/central/</url>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/central/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -45,12 +44,12 @@
 		<repository>
 			<id>nexus-releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://10.211.55.8:8081/nexus/content/repositories/releases/</url>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://10.211.55.8:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -224,6 +223,23 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>1.2.0</version>
+		</dependency>
+
+		<!-- curator -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-client</artifactId>
+			<version>2.4.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>2.4.2</version>
 		</dependency>
 
 	</dependencies>
