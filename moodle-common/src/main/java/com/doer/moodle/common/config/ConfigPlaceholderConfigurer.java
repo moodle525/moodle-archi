@@ -16,7 +16,6 @@ import org.springframework.util.PropertyPlaceholderHelper;
 import org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver;
 import org.springframework.util.StringValueResolver;
 
-import com.doer.moodle.common.config.zk.ZkClient;
 import com.doer.moodle.common.config.zk.ZkUtil;
 import com.doer.moodle.common.contants.ConfigConstant;
 import com.doer.moodle.common.exceptions.PlatformException;

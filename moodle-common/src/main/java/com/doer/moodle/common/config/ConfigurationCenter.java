@@ -77,6 +77,7 @@ public class ConfigurationCenter {
 	}
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "config.xml" });
 		ConfigurationCenter confCenter = (ConfigurationCenter) ctx.getBean("configCenter");
 		log.info(confCenter.getConfig("/com/doer/moodle/dubbo"));

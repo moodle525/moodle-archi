@@ -7,7 +7,7 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd
         ">
 
-	<dubbo:application name="${moodle.consumer.registry.appname}" />
+	<dubbo:application name="${moodle.consumer.appname}" />
 	<dubbo:registry address="${moodle.registry.address}"
 		protocol="${moodle.registry.protocol}" />
 		
