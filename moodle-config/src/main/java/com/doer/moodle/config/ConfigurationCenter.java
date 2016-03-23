@@ -39,13 +39,12 @@ public class ConfigurationCenter {
 
 	public void writeData(Properties props) {
 		Set<Object> keyValue = props.keySet();
-		int count = 0;
 		for (Iterator<Object> it = keyValue.iterator(); it.hasNext();) {
-			String path = (String) it.next();
-			String data = (String) props.getProperty(path);
-			zkClient.forPath(ConfigConstant.CONFIG_INFO_PATH + ConfigConstant.CONFIG_PATH_CHILD + (count++), path);
-			zkClient.forPath(path, data);
-			log.info("写入配置信息【" + path + ":" + data + "】");
+			String key = (String) it.next();
+			String value = (String) props.getProperty(key);
+			String subPath = key.replace("/", ".").substring(1, key.length());
+			zkClient.create(ConfigConstant.CONFIG_INFO_PATH + "/" + subPath, "");
+			zkClient.create(key, value);
 		}
 	}
 

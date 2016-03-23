@@ -5,8 +5,10 @@ import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.transaction.CuratorTransaction;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.log4j.Logger;
+import org.apache.zookeeper.CreateMode;
 import org.apache.zookeeper.data.Stat;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,7 +20,7 @@ import com.google.gson.Gson;
 public class ZkClient {
 	private static final Logger log = Logger.getLogger(ZkClient.class);
 
-	private CuratorFramework curator;
+	private CuratorFramework client;
 	private String zkAddress;
 	private int timeOut;
 	private int sessionTimeOut;
@@ -33,20 +35,20 @@ public class ZkClient {
 			sessionTimeOut = 2000;
 		if (timeOut <= 0)
 			timeOut = 2000;
-		curator = CuratorFrameworkFactory.builder().connectString(zkAddress).sessionTimeoutMs(sessionTimeOut)
+		client = CuratorFrameworkFactory.builder().connectString(zkAddress).sessionTimeoutMs(sessionTimeOut)
 				.connectionTimeoutMs(timeOut).canBeReadOnly(false)
 				.retryPolicy(new ExponentialBackoffRetry(1000, Integer.MAX_VALUE)).build();
-		curator.start();
+		client.start();
 	}
 
 	public void close() {
-		curator.close();
+		client.close();
 	}
 
 	public boolean exists(String path) {
 		Stat stat = null;
 		try {
-			stat = curator.checkExists().forPath(path);
+			stat = client.checkExists().forPath(path);
 		} catch (Exception e) {
 			log.error(e);
 			throw new PlatformException("0", e);
@@ -56,7 +58,7 @@ public class ZkClient {
 
 	public String delete(final String path) {
 		try {
-			curator.delete().inBackground().forPath(path);
+			client.delete().deletingChildrenIfNeeded().forPath(path);
 		} catch (Exception e) {
 		}
 		return path;
@@ -65,7 +67,7 @@ public class ZkClient {
 	public List<String> getChildren(String path) {
 		List<String> children = null;
 		try {
-			children = curator.getChildren().forPath(path);
+			children = client.getChildren().forPath(path);
 		} catch (Exception e) {
 			log.error(e);
 			throw new PlatformException("0", e);
@@ -73,27 +75,77 @@ public class ZkClient {
 		return children;
 	}
 
-	public String forPath(String path, String data) {
-		String _path = null;
+	public CuratorTransaction inTransaction() {
+		return client.inTransaction();
+	}
+
+	/**
+	 * 创建永久节点
+	 * 
+	 * @param path
+	 * @param data
+	 */
+	public void create(String path, String data) {
+		if (data == null)
+			data = "";
 		try {
 			if (!exists(path)) {
-				_path = curator.create().creatingParentsIfNeeded().forPath(path, data.getBytes());
+				client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath(path,
+						data.getBytes());
+				log.info("节点[" + path + "]创建成功," + data);
+			} else {
+				String dataed = getData(path);
+				if (!StringUtils.isEmpty(dataed) && !dataed.equals(data)) {
+					inTransaction().delete().forPath(path).and().create().withMode(CreateMode.PERSISTENT)
+							.forPath(path, data.getBytes()).and().commit();
+					log.info("节点[" + path + "]数据有更新," + data);
+				}
 			}
 		} catch (Exception e) {
 			log.error(e);
 			throw new PlatformException("0", e);
 		}
-		return _path;
 	}
 
-	public String forPath(String path) {
-		return forPath(path, "");
+	/**
+	 * 创建临时节点，CreateMode.EPHEMERAL
+	 * 
+	 * @param path
+	 * @param data
+	 */
+	public void createEphemeral(String path, String data) {
+		try {
+			client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL).forPath(path, data.getBytes());
+		} catch (Exception e) {
+			log.error(e);
+			throw new PlatformException("0", e);
+		}
+	}
+
+	public void createPersistentSequential(String path, String data) {
+		try {
+			client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT_SEQUENTIAL).forPath(path,
+					data.getBytes());
+		} catch (Exception e) {
+			log.error(e);
+			throw new PlatformException("0", e);
+		}
+	}
+
+	public void createEphemeralSequential(String path, String data) {
+		try {
+			client.create().creatingParentsIfNeeded().withMode(CreateMode.EPHEMERAL_SEQUENTIAL).forPath(path,
+					data.getBytes());
+		} catch (Exception e) {
+			log.error(e);
+			throw new PlatformException("0", e);
+		}
 	}
 
 	public String getData(String path) {
 		byte[] data = null;
 		try {
-			data = curator.getData().forPath(path);
+			data = client.getData().forPath(path);
 		} catch (Exception e) {
 			log.error(e);
 			throw new PlatformException("0", e);
@@ -106,7 +158,7 @@ public class ZkClient {
 
 	public void setData(String path, String data) {
 		try {
-			curator.setData().forPath(path, data.getBytes());
+			client.setData().forPath(path, data.getBytes());
 		} catch (Exception e) {
 			log.error(e);
 			throw new PlatformException("0", e);
@@ -137,20 +189,14 @@ public class ZkClient {
 		this.sessionTimeOut = sessionTimeOut;
 	}
 
-	public CuratorFramework getCurator() {
-		return curator;
-	}
-
-	public void setCurator(CuratorFramework curator) {
-		this.curator = curator;
-	}
-
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "config.xml" });
 		ZkClient zkClient = (ZkClient) ctx.getBean("zkClient");
-		System.out.println(zkClient.exists(ConfigConstant.CONFIG_INFO_PATH));
-		List<String> children = zkClient.getChildren("/com/doer/moodle");
-		System.out.println(new Gson().toJson(children));
+		 System.out.println(zkClient.exists(ConfigConstant.CONFIG_INFO_PATH));
+		 List<String> children = zkClient.getChildren(ConfigConstant.CONFIG_INFO_PATH);
+		 System.out.println(new Gson().toJson(children));
+		 //zkClient.delete("/com");
 	}
 
 }
