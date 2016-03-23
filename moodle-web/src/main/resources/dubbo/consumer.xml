@@ -8,8 +8,8 @@
         ">
 
 	<dubbo:application name="${moodle.consumer.registry.appname}" />
-	<dubbo:registry address="${moodle.consumer.registry.address}"
-		protocol="${moodle.consumer.registry.protocol}" />
+	<dubbo:registry address="${moodle.registry.address}"
+		protocol="${moodle.registry.protocol}" />
 		
 	<dubbo:annotation package="com.doer.moodle.web" />
 

@@ -42,8 +42,8 @@ public class ConfigurationCenter {
 		for (Iterator<Object> it = keyValue.iterator(); it.hasNext();) {
 			String key = (String) it.next();
 			String value = (String) props.getProperty(key);
-			String subPath = key.replace("/", ".").substring(1, key.length());
-			zkClient.create(ConfigConstant.CONFIG_INFO_PATH + "/" + subPath, "");
+			String subPath = key.replace(ConfigConstant.UNIX_SEPERATE, ConfigConstant.DOT).substring(1, key.length());
+			zkClient.create(ConfigConstant.CONFIG_INFO_PATH + ConfigConstant.UNIX_SEPERATE + subPath, "");
 			zkClient.create(key, value);
 		}
 	}
