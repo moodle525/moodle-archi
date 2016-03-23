@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zk;
+package com.doer.moodle.common.config.zk;
 
 import java.util.List;
 

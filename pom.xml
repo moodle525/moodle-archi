@@ -19,7 +19,6 @@
 		<module>moodle-mybatis</module>
 		<module>moodle-test</module>
 		<module>moodle-dubbo-interfaces</module>
-		<module>moodle-config</module>
 	</modules>
 
 	<properties>

@@ -1,4 +1,4 @@
-package com.doer.moodle.config;
+package com.doer.moodle.common.config;
 
 import java.util.List;
 import java.util.Map;
@@ -14,9 +14,9 @@ import org.springframework.util.PropertyPlaceholderHelper;
 import org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver;
 import org.springframework.util.StringValueResolver;
 
+import com.doer.moodle.common.config.zk.ZkUtil;
 import com.doer.moodle.common.contants.ConfigConstant;
 import com.doer.moodle.common.exceptions.PlatformException;
-import com.doer.moodle.config.zk.ZkUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

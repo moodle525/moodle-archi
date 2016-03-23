@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zookeeper;
+package com.doer.moodle.common.config.zoo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +17,10 @@ import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Id;
 import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
 
+import com.doer.moodle.common.config.zoo.cons.ZkErrorCodeConstants;
+import com.doer.moodle.common.config.zoo.impl.ZKPool;
 import com.doer.moodle.common.exceptions.PlatformException;
 import com.doer.moodle.common.util.StringUtil;
-import com.doer.moodle.config.zookeeper.cons.ZkErrorCodeConstants;
-import com.doer.moodle.config.zookeeper.impl.ZKPool;
 
 public class ZKClient {
     private static final String DIGEST_SCHEMA = "digest";

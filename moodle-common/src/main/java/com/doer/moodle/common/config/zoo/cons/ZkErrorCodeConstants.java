@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zookeeper.cons;
+package com.doer.moodle.common.config.zoo.cons;
 
 public class ZkErrorCodeConstants {
 	public static final String CONFIG_ZK_ERROR = "40001";

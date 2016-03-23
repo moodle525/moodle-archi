@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zookeeper.impl;
+package com.doer.moodle.common.config.zoo.impl;
 
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.GenericObjectPool;

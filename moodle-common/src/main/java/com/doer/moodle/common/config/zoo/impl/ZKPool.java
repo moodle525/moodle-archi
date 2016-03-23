@@ -1,9 +1,9 @@
-package com.doer.moodle.config.zookeeper.impl;
+package com.doer.moodle.common.config.zoo.impl;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 
-import com.doer.moodle.config.zookeeper.ZKClient;
-import com.doer.moodle.config.zookeeper.cons.ConfigCenterConstants;
+import com.doer.moodle.common.config.zoo.ZKClient;
+import com.doer.moodle.common.config.zoo.cons.ConfigCenterConstants;
 
 public class ZKPool extends Pool<ZKClient> {
 

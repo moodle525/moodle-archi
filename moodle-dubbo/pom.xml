@@ -38,11 +38,6 @@
 			<artifactId>moodle-cache</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>com.doer</groupId>
-			<artifactId>moodle-config</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 	</dependencies>
 
 	<build>

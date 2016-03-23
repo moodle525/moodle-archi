@@ -1,14 +1,13 @@
-package com.doer.moodle.config.zookeeper.impl;
+package com.doer.moodle.common.config.zoo.impl;
 
 import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.jboss.netty.util.internal.StringUtil;
 
+import com.doer.moodle.common.config.zoo.cons.ZkErrorCodeConstants;
 import com.doer.moodle.common.exceptions.PlatformException;
-import com.doer.moodle.config.zookeeper.cons.ZkErrorCodeConstants;
 
 public class ZkPoolFactory {
 

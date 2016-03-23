@@ -1,4 +1,4 @@
-package com.doer.moodle.config;
+package com.doer.moodle.common.config;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -10,8 +10,8 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.doer.moodle.common.config.zk.ZkClient;
 import com.doer.moodle.common.contants.ConfigConstant;
-import com.doer.moodle.config.zk.ZkClient;
 
 public class ConfigurationCenter {
 	private ZkClient zkClient;

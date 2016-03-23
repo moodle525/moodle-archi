@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zookeeper.cons;
+package com.doer.moodle.common.config.zoo.cons;
 
 
 /**

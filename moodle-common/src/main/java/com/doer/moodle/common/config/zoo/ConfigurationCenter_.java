@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zookeeper;
+package com.doer.moodle.common.config.zoo;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.doer.moodle.common.exceptions.PlatformException;
-import com.doer.moodle.config.ConfigurationWatcher;
 
 /**
  * 统一配置ZK管理类，实现初始化自动创建

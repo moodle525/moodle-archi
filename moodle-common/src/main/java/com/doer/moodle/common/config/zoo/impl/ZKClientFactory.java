@@ -1,4 +1,4 @@
-package com.doer.moodle.config.zookeeper.impl;
+package com.doer.moodle.common.config.zoo.impl;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -6,7 +6,7 @@ import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
 
-import com.doer.moodle.config.zookeeper.ZKClient;
+import com.doer.moodle.common.config.zoo.ZKClient;
 
 public class ZKClientFactory implements PooledObjectFactory<ZKClient> {
 	private final AtomicReference<String> address = new AtomicReference<String>();
