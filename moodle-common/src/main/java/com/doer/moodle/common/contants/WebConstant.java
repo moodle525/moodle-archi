@@ -1,6 +1,6 @@
 package com.doer.moodle.common.contants;
 
-public class MoodleConst {
+public class WebConstant {
 	/**
 	 * 返回结果
 	 * 

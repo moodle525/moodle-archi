@@ -2,7 +2,7 @@ package com.doer.moodle.common.web;
 
 import java.io.Serializable;
 
-import com.doer.moodle.common.contants.MoodleConst;
+import com.doer.moodle.common.contants.WebConstant;
 
 /**
  * 返回页面数据包装类
@@ -21,7 +21,7 @@ public class R<T> implements Serializable {
 	 * 成功，无数据
 	 */
 	public R() {
-		this.code = MoodleConst.RType.SUCCESS;
+		this.code = WebConstant.RType.SUCCESS;
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class R<T> implements Serializable {
 	 * @param data
 	 */
 	public R(T data) {
-		this.code = MoodleConst.RType.SUCCESS;
+		this.code = WebConstant.RType.SUCCESS;
 		this.data = data;
 	}
 

@@ -10,14 +10,14 @@ import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.doer.moodle.common.contants.ConfigConstant;
 import com.doer.moodle.config.zk.ZkClient;
 
 public class ConfigurationCenter {
 	private ZkClient zkClient;
 	private List<String> configFiles;
 	private boolean initWriteData;
-	private static final Logger log = Logger
-			.getLogger(ConfigurationCenter.class);
+	private static final Logger log = Logger.getLogger(ConfigurationCenter.class);
 
 	public ConfigurationCenter() {
 	}
@@ -39,9 +39,11 @@ public class ConfigurationCenter {
 
 	public void writeData(Properties props) {
 		Set<Object> keyValue = props.keySet();
+		int count = 0;
 		for (Iterator<Object> it = keyValue.iterator(); it.hasNext();) {
 			String path = (String) it.next();
 			String data = (String) props.getProperty(path);
+			zkClient.forPath(ConfigConstant.CONFIG_INFO_PATH + ConfigConstant.CONFIG_PATH_CHILD + (count++), path);
 			zkClient.forPath(path, data);
 			log.info("写入配置信息【" + path + ":" + data + "】");
 		}
@@ -66,8 +68,6 @@ public class ConfigurationCenter {
 	public void setConfigFiles(List<String> configFiles) {
 		this.configFiles = configFiles;
 	}
-	
-	
 
 	public boolean isInitWriteData() {
 		return initWriteData;
@@ -78,7 +78,8 @@ public class ConfigurationCenter {
 	}
 
 	public static void main(String[] args) {
-		ApplicationContext ctx = new ClassPathXmlApplicationContext(
-				new String[] { "config.xml" });
+		ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "config.xml" });
+		ConfigurationCenter confCenter = (ConfigurationCenter) ctx.getBean("configCenter");
+		log.info(confCenter.getConfig("/com/doer/moodle/dubbo"));
 	}
 }

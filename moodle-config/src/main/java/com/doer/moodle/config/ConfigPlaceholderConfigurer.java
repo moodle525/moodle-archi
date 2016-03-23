@@ -1,5 +1,7 @@
 package com.doer.moodle.config;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 import org.springframework.beans.BeansException;
@@ -7,11 +9,18 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.config.PlaceholderConfigurerSupport;
 import org.springframework.core.SpringProperties;
 import org.springframework.core.env.AbstractEnvironment;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.PropertyPlaceholderHelper;
 import org.springframework.util.PropertyPlaceholderHelper.PlaceholderResolver;
 import org.springframework.util.StringValueResolver;
 
-public class ZkConfigPlaceholderConfigurer extends PlaceholderConfigurerSupport {
+import com.doer.moodle.common.contants.ConfigConstant;
+import com.doer.moodle.common.exceptions.PlatformException;
+import com.doer.moodle.config.zk.ZkUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+public class ConfigPlaceholderConfigurer extends PlaceholderConfigurerSupport {
 
 	/** 从不检查系统属性 */
 	public static final int SYSTEM_PROPERTIES_MODE_NEVER = 0;
@@ -32,22 +41,20 @@ public class ZkConfigPlaceholderConfigurer extends PlaceholderConfigurerSupport 
 	@Override
 	protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props)
 			throws BeansException {
-		String[] beanDefinitionNames = beanFactoryToProcess.getBeanDefinitionNames();
-		System.out.println("总bean数:"+beanDefinitionNames.length);
-		for(String s :beanDefinitionNames){
-			System.out.println("当前bean："+s);
+		List<String> paths = ZkUtil.getChildren(ConfigConstant.CONFIG_INFO_PATH);
+		if (CollectionUtils.isEmpty(paths)) {
+			throw new PlatformException("0", "配置中心没有配置信息！");
 		}
 		props = new Properties();
-		props.setProperty("jdbc.url", "jdbc:mysql://127.0.0.1:3306/doer?characterEncoding=utf8");
-		props.setProperty("jdbc.username", "root");
-		props.setProperty("jdbc.password", "bNVOqb7WKLX5Bjnw+LMv92taj25KOxDimXxILPQjw42wgv+1lHzOH8kr97xDwWdhpY67QuYCS7sWN4W46YbkFA==");
-		props.setProperty("moodle.provider.appname", "moodle_dubbo_service");
-		props.setProperty("moodle.provider.registry.protocol", "zookeeper");
-		props.setProperty("moodle.provider.registry.address", "127.0.0.1:2181");
-		props.setProperty("moodle.provider.registry.file", "./dubbo-registry.dat");
-		props.setProperty("moodle.provider.protocol.port", "20880");
-		props.setProperty("moodle.provider.protocol", "dubbo");
-		props.setProperty("moodle.provider.timeout", "20000");
+		for (String path : paths) {
+			String configPath = ZkUtil.getConfig(ConfigConstant.CONFIG_INFO_PATH + "/" + path);
+			String config = ZkUtil.getConfig(configPath);
+			Map<String, String> configMap = new Gson().fromJson(config, new TypeToken<Map<String, String>>() {
+			}.getType());
+			for (Map.Entry<String, String> entry : configMap.entrySet()) {
+				props.setProperty(entry.getKey(), entry.getValue());
+			}
+		}
 		System.out.println("属性设置完成");
 		StringValueResolver valueResolver = new PlaceholderResolvingStringValueResolver(props);
 		System.out.println("解析完成");
@@ -84,7 +91,8 @@ public class ZkConfigPlaceholderConfigurer extends PlaceholderConfigurerSupport 
 
 		@Override
 		public String resolvePlaceholder(String placeholderName) {
-			return ZkConfigPlaceholderConfigurer.this.resolvePlaceholder(placeholderName, props, SYSTEM_PROPERTIES_MODE_FALLBACK);
+			return ConfigPlaceholderConfigurer.this.resolvePlaceholder(placeholderName, props,
+					SYSTEM_PROPERTIES_MODE_FALLBACK);
 		}
 	}
 
@@ -118,6 +126,15 @@ public class ZkConfigPlaceholderConfigurer extends PlaceholderConfigurerSupport 
 				logger.debug("Could not access system property '" + key + "': " + ex);
 			}
 			return null;
+		}
+	}
+
+	public static void main(String[] args) {
+		String json = "{\"jdbc.url\":\"jdbc:mysql://127.0.0.1:3306/doer?characterEncoding=utf8\",\"jdbc.username\":\"root\",\"jdbc.password\":\"bNVOqb7WKLX5Bjnw+LMv92taj25KOxDimXxILPQjw42wgv+1lHzOH8kr97xDwWdhpY67QuYCS7sWN4W46YbkFA==\",\"jdbc.maxActive\":\"60\",\"jdbc.minIdle\":\"1\",\"jdbc.initialSize\":\"3\",\"jdbc.maxWait\":\"50000\",\"jdbc.minEvictableIdleTimeMillis\":\"30000\",\"jdbc.timeBetweenEvictionRunsMillis\":\"60000\"}";
+		Map<String, String> configMap = new Gson().fromJson(json, new TypeToken<Map<String, String>>() {
+		}.getType());
+		for (Map.Entry<String, String> entry : configMap.entrySet()) {
+			System.out.println(entry.getKey()+"..."+entry.getValue());
 		}
 	}
 

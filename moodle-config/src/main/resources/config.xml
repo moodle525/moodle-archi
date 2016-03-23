@@ -9,14 +9,14 @@
         ">
 
 	<bean id="zkClient" class="com.doer.moodle.config.zk.ZkClient" init-method="init" destroy-method="close">
-		<property name="zkAddress" value="10.211.55.8:2181" />
+		<property name="zkAddress" value="127.0.0.1:2181" />
 		<property name="timeOut" value="200000" />
 		<property name="sessionTimeOut" value="200000" />
 	</bean>
 
 	<bean id="configCenter" class="com.doer.moodle.config.ConfigurationCenter" init-method="init">
 		<property name="zkClient" ref="zkClient" />
-		<property name="initWriteData" value="false"/>
+		<property name="initWriteData" value="true"/>
 		<property name="configFiles">
 			<list>
 				<value>/config.properties</value>

@@ -20,8 +20,8 @@
 	<context:annotation-config />
 	<task:annotation-driven />
 
-<!-- 	<context:property-placeholder location="classpath*:beans.properties" /> -->
-	<bean class="com.doer.moodle.dubbo.Configuration"/>
+	<!-- placeHolder -->
+	<bean class="com.doer.moodle.config.ConfigPlaceholderConfigurer" />
 
 	<!--proxy-target-class="true"强制使用cglib代理 如果为false则spring会自动选择 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
@@ -30,8 +30,8 @@
 	<context:component-scan base-package="com.doer.moodle.dubbo" />
 
 	<!--hibernate -->
-<!-- 	<import resource="classpath*:spring/beans_datasource.xml" /> -->
-	
+	<!-- <import resource="classpath*:spring/beans_datasource.xml" /> -->
+
 	<!-- mybatis -->
 	<import resource="classpath*:spring/beans_mybatis_datasource.xml" />
 	<!-- <import resource="classpath*:spring/beans_redis_datasource.xml" /> -->
