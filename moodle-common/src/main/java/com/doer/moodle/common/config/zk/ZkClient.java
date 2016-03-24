@@ -16,6 +16,7 @@ import org.apache.zookeeper.ZooDefs.Perms;
 import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Id;
 import org.apache.zookeeper.data.Stat;
+import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -36,25 +37,24 @@ public class ZkClient {
 	private String zkAddress;
 	private int timeOut;
 	private int sessionTimeOut;
-	private String authinfo;
+	private String authInfo;
 
 	public ZkClient() {
 	}
 
 	public void init() throws Exception {
 		if (StringUtils.isBlank(zkAddress))
-			throw new PlatformException("0", "zk address is not be null");
+			throw new PlatformException("0", "zk address can not be null");
+		if (StringUtils.isBlank(authInfo) || "null".equalsIgnoreCase(authInfo))
+			throw new PlatformException("0", "authInfo can not be null or null char");
 		if (sessionTimeOut <= 0)
 			sessionTimeOut = 2000;
 		if (timeOut <= 0)
 			timeOut = 2000;
-		CuratorFrameworkFactory.Builder builder = CuratorFrameworkFactory.builder().connectString(zkAddress)
-				.sessionTimeoutMs(sessionTimeOut).connectionTimeoutMs(timeOut).canBeReadOnly(false)
-				.retryPolicy(new ExponentialBackoffRetry(1000, Integer.MAX_VALUE));
-		if (StringUtils.isEmpty(authinfo)) {
-			//builder.authorization(ConfigConstant.Scheme.DIGEST, authinfo.getBytes());
-		}
-		client = builder.build();
+		client = CuratorFrameworkFactory.builder().connectString(zkAddress).sessionTimeoutMs(sessionTimeOut)
+				.connectionTimeoutMs(timeOut).canBeReadOnly(false)
+				.retryPolicy(new ExponentialBackoffRetry(1000, Integer.MAX_VALUE))
+				.authorization(ConfigConstant.AuthType.DIGEST, authInfo.getBytes()).build();
 		client.start();
 	}
 
@@ -81,15 +81,6 @@ public class ZkClient {
 	 */
 	public String delete(final String path) {
 		try {
-			List<ACL> aclList = new ArrayList<ACL>();
-			ACL acl = null;
-			try {
-				acl = new ACL(Perms.ALL, new Id(ConfigConstant.Scheme.DIGEST, "admin:admin"));
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			aclList.add(acl);
-			client.setACL().withACL(aclList).forPath(path);
 			//// 保证节点必须删除，如果删除出现错误，则后台程序会不断去尝试删除。
 			client.delete().guaranteed().deletingChildrenIfNeeded().forPath(path);
 		} catch (Exception e) {
@@ -113,12 +104,15 @@ public class ZkClient {
 		return client.inTransaction();
 	}
 
-	private List<ACL> setBasicAclList() {
-		List<ACL> aclList = new ArrayList<ACL>();
-		ACL acl = null;
-		acl = new ACL(Perms.ALL, new Id(ConfigConstant.Scheme.DIGEST, authinfo));
-		aclList.add(acl);
-		return aclList;
+	private List<ACL> setBasicAcl() {
+		List<ACL> acls = new ArrayList<ACL>();
+		try {
+			acls.add(new ACL(Perms.ALL,
+					new Id(ConfigConstant.AuthType.DIGEST, DigestAuthenticationProvider.generateDigest(authInfo))));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		return acls;
 	}
 
 	/**
@@ -133,20 +127,20 @@ public class ZkClient {
 		try {
 
 			if (!exists(path)) {
-				client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).withACL(setBasicAclList())
+				client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).withACL(setBasicAcl())
 						.forPath(path, data.getBytes());
 				log.info("node[" + path + "]created," + data);
 			} else {
 				String dataed = getData(path);
 				if (!StringUtils.isEmpty(dataed) && !dataed.equals(data)) {
-					inTransaction().delete().forPath(path).and().create().withMode(CreateMode.PERSISTENT)
-							.withACL(setBasicAclList()).forPath(path, data.getBytes()).and().commit();
+					client.setACL().withACL(setBasicAcl());
+					setData(path, data);
 					log.info("node[" + path + "]updated," + data);
 				}
 			}
 		} catch (Exception e) {
 			log.error(e);
-			// throw new PlatformException("0", e);
+			throw new PlatformException("0", e);
 		}
 	}
 
@@ -232,41 +226,28 @@ public class ZkClient {
 		this.sessionTimeOut = sessionTimeOut;
 	}
 
-	public String getAuthinfo() {
-		return authinfo;
+	public String getAuthInfo() {
+		return authInfo;
 	}
 
-	public void setAuthinfo(String authinfo) {
-		this.authinfo = authinfo;
+	public void setAuthInfo(String authInfo) {
+		this.authInfo = authInfo;
 	}
-	
-	static public String generateDigest(String idPassword)
-	        throws NoSuchAlgorithmException {
-	    String parts[] = idPassword.split(":", 2);
-	    byte digest[] = MessageDigest.getInstance("SHA1").digest(
-	            idPassword.getBytes());
-	    return parts[0] + ":" + Base64Util.encode(digest);
+
+	static public String generateDigest(String idPassword) throws NoSuchAlgorithmException {
+		String parts[] = idPassword.split(":", 2);
+		byte digest[] = MessageDigest.getInstance("SHA1").digest(idPassword.getBytes());
+		return parts[0] + ":" + Base64Util.encode(digest);
 	}
 
 	public static void main(String[] args) throws Exception {
 		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "config.xml" });
 		ZkClient zkClient = (ZkClient) ctx.getBean("zkClient");
-//		System.out.println(zkClient.exists(ConfigConstant.CONFIG_INFO_PATH));
-//		List<String> children = zkClient.getChildren(ConfigConstant.CONFIG_INFO_PATH);
-//		System.out.println(new Gson().toJson(children));
-//		zkClient.delete("/com");
+		System.out.println(zkClient.exists(ConfigConstant.CONFIG_INFO_PATH));
 
-//		System.out.println(DigestAuthenticationProvider.generateDigest("admin:admin"));
+		// System.out.println(DigestAuthenticationProvider.generateDigest("admin:"));
 		// admin:x1nq8J5GOJVPY6zgzhtTtA9izLc=
-		
-		List<ACL> aclList = new ArrayList<ACL>();
-		ACL acl = null;
-		acl = new ACL(Perms.ALL, new Id(ConfigConstant.Scheme.DIGEST, generateDigest("admin:admin")));
-		aclList.add(acl);
-		client.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).withACL((aclList))
-		.forPath("/lix", "xxx".getBytes());
-		//admin:C759EAF09E4638954F63ACE0CE1B53B40F62CCB7
 	}
 
 }

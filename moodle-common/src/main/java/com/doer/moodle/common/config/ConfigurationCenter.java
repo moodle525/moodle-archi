@@ -39,6 +39,7 @@ public class ConfigurationCenter {
 	public void init() {
 		if (refresh) {
 			writeConfig(loadConfig());
+			log.info("config load successfully...");
 		}
 
 	}
@@ -62,7 +63,9 @@ public class ConfigurationCenter {
 			String key = (String) it.next();
 			String value = (String) props.getProperty(key);
 			String subPath = key.replace(ConfigConstant.UNIX_SEPERATE, ConfigConstant.DOT).substring(1, key.length());
+			//保存配置key
 			zkClient.create(ConfigConstant.CONFIG_INFO_PATH + ConfigConstant.UNIX_SEPERATE + subPath, "");
+			//保存配置信息key-value
 			zkClient.create(key, value);
 		}
 

@@ -31,7 +31,7 @@ public class CuratorAuthTest {
 	public void create() throws Exception {
 		List<ACL> aclList = new ArrayList<ACL>();
 		ACL acl = null;
-		acl = new ACL(Perms.READ, new Id(ConfigConstant.Scheme.DIGEST, DigestAuthenticationProvider.generateDigest("admin:admin")));
+		acl = new ACL(Perms.READ, new Id(ConfigConstant.AuthType.DIGEST, DigestAuthenticationProvider.generateDigest("admin:admin")));
 		aclList.add(acl);
 		client.create().creatingParentsIfNeeded().withACL(aclList).forPath(path);
 	}

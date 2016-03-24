@@ -8,7 +8,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.doer.moodle.common.contants.ConfigConstant;
 import com.google.gson.Gson;
 
-@SuppressWarnings("resource")
+/**
+ * ZKClient工具类
+ * @author lixiongcheng
+ *
+ */
 public class ZkUtil {
 	private ZkUtil() {
 	}
@@ -17,6 +21,7 @@ public class ZkUtil {
 	
 	static {
 		System.out.println("zkClient utils...............");
+		@SuppressWarnings("resource")
 		ApplicationContext ctx = new ClassPathXmlApplicationContext(
 				new String[] { "config.xml" });
 		zkClient = (ZkClient) ctx.getBean("zkClient");
