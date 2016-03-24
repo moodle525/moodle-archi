@@ -13,31 +13,50 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.doer.moodle.common.config.zk.ZkClient;
 import com.doer.moodle.common.contants.ConfigConstant;
 
+/**
+ * 配置中心，加载配置信息
+ * @author lixiongcheng
+ *
+ */
 public class ConfigurationCenter {
+	/**
+	 * ZkClient
+	 */
 	private ZkClient zkClient;
+	/**
+	 * 配置文件
+	 */
 	private List<String> configFiles;
-	private boolean initWriteData;
+	/**
+	 * 初始化时是否重新加载配置
+	 */
+	private boolean refresh;
 	private static final Logger log = Logger.getLogger(ConfigurationCenter.class);
 
 	public ConfigurationCenter() {
 	}
 
 	public void init() {
+		if (refresh) {
+			writeConfig(loadConfig());
+		}
+
+	}
+
+	public Properties loadConfig() {
 		Properties props = new Properties();
 		try {
 			for (String configFile : configFiles) {
 				props.load(this.getClass().getResourceAsStream(configFile));
 			}
-			if (initWriteData) {
-				writeData(props);
-			}
 		} catch (IOException e) {
+			log.error(e);
 			e.printStackTrace();
 		}
-
+		return props;
 	}
 
-	public void writeData(Properties props) {
+	public void writeConfig(Properties props) {
 		Set<Object> keyValue = props.keySet();
 		for (Iterator<Object> it = keyValue.iterator(); it.hasNext();) {
 			String key = (String) it.next();
@@ -46,6 +65,7 @@ public class ConfigurationCenter {
 			zkClient.create(ConfigConstant.CONFIG_INFO_PATH + ConfigConstant.UNIX_SEPERATE + subPath, "");
 			zkClient.create(key, value);
 		}
+
 	}
 
 	public String getConfig(String path) {
@@ -68,12 +88,12 @@ public class ConfigurationCenter {
 		this.configFiles = configFiles;
 	}
 
-	public boolean isInitWriteData() {
-		return initWriteData;
+	public boolean isRefresh() {
+		return refresh;
 	}
 
-	public void setInitWriteData(boolean initWriteData) {
-		this.initWriteData = initWriteData;
+	public void setRefresh(boolean refresh) {
+		this.refresh = refresh;
 	}
 
 	public static void main(String[] args) {
