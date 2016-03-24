@@ -8,16 +8,18 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd
         ">
 
-	<bean id="zkClient" class="com.doer.moodle.common.config.zk.ZkClient" init-method="init" destroy-method="close">
+	<bean id="zkClient" class="com.doer.moodle.common.config.zk.ZkClient"
+		init-method="init" destroy-method="close" scope="singleton">
 		<property name="zkAddress" value="127.0.0.1:2181" />
 		<property name="timeOut" value="200000" />
 		<property name="sessionTimeOut" value="200000" />
-		<property name="authinfo" value="admin:admin"/>
+		<property name="authinfo" value="admin:x1nq8J5GOJVPY6zgzhtTtA9izLc=" />
 	</bean>
 
-	<bean id="configCenter" class="com.doer.moodle.common.config.ConfigurationCenter" init-method="init">
+	<bean id="configCenter" class="com.doer.moodle.common.config.ConfigurationCenter"
+		init-method="init">
 		<property name="zkClient" ref="zkClient" />
-		<property name="refresh" value="true"/>
+		<property name="refresh" value="true" />
 		<property name="configFiles">
 			<list>
 				<value>/config.properties</value>
