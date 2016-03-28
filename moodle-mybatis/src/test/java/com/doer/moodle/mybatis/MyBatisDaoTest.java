@@ -13,7 +13,7 @@ import com.google.gson.Gson;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:/spring/beans.xml"})
-@Transactional
+@Transactional(rollbackFor=Exception.class)
 public class MyBatisDaoTest {
 	private Gson gson = new Gson();
 	
@@ -21,8 +21,28 @@ public class MyBatisDaoTest {
 	IPmsUserDao pmsUserdao;
 	
 	@Test
-	public void test1(){
+	public void getById(){
 		PmsUser user = pmsUserdao.getById(1);
 		System.out.println(gson.toJson(user));
 	}
+	
+	@Test
+	public void save() throws Exception{
+		PmsUser user = new PmsUser();
+		user.setUserName("张三");
+		user.setUserNo("11a11");
+		user.setUserPwd("1111111111111111111111111111");
+		user.setEmail("455@qq.com");
+		user.setRemark("4444");
+		user.setStatus(0);
+		user.setUserType("D");
+		pmsUserdao.insert(user);
+	}
+	
+	@Test
+	public void find(){
+		PmsUser user = pmsUserdao.findByUserNo("111");
+		System.out.println(gson.toJson(user));
+	}
+	
 }

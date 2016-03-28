@@ -17,6 +17,7 @@ import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Id;
 import org.apache.zookeeper.data.Stat;
 import org.apache.zookeeper.server.auth.DigestAuthenticationProvider;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -30,7 +31,7 @@ import com.doer.moodle.common.util.Base64Util;
  * @author lixiongcheng
  *
  */
-public class ZkClient {
+public class ZkClient implements InitializingBean {
 	private static final Logger log = Logger.getLogger(ZkClient.class);
 
 	private static CuratorFramework client;
@@ -42,7 +43,8 @@ public class ZkClient {
 	public ZkClient() {
 	}
 
-	public void init() throws Exception {
+	@Override
+	public void afterPropertiesSet() throws Exception {
 		if (StringUtils.isBlank(zkAddress))
 			throw new PlatformException("0", "zk address can not be null");
 		if (StringUtils.isBlank(authInfo) || "null".equalsIgnoreCase(authInfo))
