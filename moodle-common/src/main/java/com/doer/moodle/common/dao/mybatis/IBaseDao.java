@@ -3,19 +3,14 @@ package com.doer.moodle.common.dao.mybatis;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.session.SqlSession;
-import org.mybatis.spring.SqlSessionTemplate;
-
 import com.doer.moodle.common.dao.page.PageBean;
 import com.doer.moodle.common.dao.page.PageParam;
 
 
 /**
- * 
- * @描述: 数据访问层基础支撑接口.
- * @作者: WuShuicheng .
- * @创建时间: 2013-7-22,下午4:52:52 .
- * @版本: 1.0 .
+ * 数据访问层基础支撑接口.
+ * @author lixiongcheng
+ *
  * @param <T>
  */
 public interface IBaseDao<T> {
@@ -102,7 +97,5 @@ public interface IBaseDao<T> {
 	public T getBy(Map<String, Object> paramMap);
 
 	
-	public SqlSession getSqlSession();
 	
-	public SqlSessionTemplate getSqlSessionTemplate();
 }

@@ -30,7 +30,9 @@
 
 	<!-- 类型别名是为 Java类型命名一个短的名字。 它只和 XML配置有关,只用来减少类完全 限定名的多余部分 -->
 	<typeAliases>
-		<typeAlias alias="PmsUser" type="com.doer.moodle.mybatis.entity.PmsUser" />
+		<!-- <typeAlias alias="PmsUser" type="com.doer.moodle.mybatis.entity.PmsUser" /> -->
+		<!-- 指定一个包名，MyBatis 会在包名下面搜索需要的 Java Bean,会使用 Bean 的首字母小写的非限定类名来作为它的别名 -->
+		<package name="com.doer.moodle.mybatis.entity"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mapper/PmsUser.Mapper.xml" />

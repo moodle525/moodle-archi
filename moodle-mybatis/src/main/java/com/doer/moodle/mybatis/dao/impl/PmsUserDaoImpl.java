@@ -10,7 +10,7 @@ import com.doer.moodle.mybatis.entity.PmsUser;
  * 
  * 用户表数据访问层接口实现类.
  */
-@Repository("pmsUserDao")
+@Repository
 public class PmsUserDaoImpl extends BaseDaoImpl<PmsUser> implements IPmsUserDao {
 
 	/**
@@ -22,7 +22,7 @@ public class PmsUserDaoImpl extends BaseDaoImpl<PmsUser> implements IPmsUserDao 
 	 */
 
 	public PmsUser findByUserNo(String userNo) {
-		return super.getSqlSession().selectOne(getStatement("findByUserNo"), userNo);
+		return this.sqlSession.selectOne(getStatement("findByUserNo"), userNo);
 	}
 
 }

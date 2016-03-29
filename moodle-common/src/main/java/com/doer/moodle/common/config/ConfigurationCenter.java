@@ -7,6 +7,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -18,7 +19,7 @@ import com.doer.moodle.common.contants.ConfigConstant;
  * @author lixiongcheng
  *
  */
-public class ConfigurationCenter {
+public class ConfigurationCenter implements InitializingBean{
 	/**
 	 * ZkClient
 	 */
@@ -36,7 +37,8 @@ public class ConfigurationCenter {
 	public ConfigurationCenter() {
 	}
 
-	public void init() {
+	@Override
+	public void afterPropertiesSet() throws Exception {
 		if (refresh) {
 			writeConfig(loadConfig());
 			log.info("config load successfully...");
@@ -105,4 +107,5 @@ public class ConfigurationCenter {
 		ConfigurationCenter confCenter = (ConfigurationCenter) ctx.getBean("configCenter");
 		log.info(confCenter.getConfig("/com/doer/moodle/dubbo"));
 	}
+
 }
