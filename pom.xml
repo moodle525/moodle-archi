@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.doer</groupId> 
-	<artifactId>moodle</artifactId> 
+	<groupId>com.doer</groupId>
+	<artifactId>moodle</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>moodle</name>
@@ -19,7 +18,8 @@
 		<module>moodle-mybatis</module>
 		<module>moodle-test</module>
 		<module>moodle-dubbo-interfaces</module>
-	</modules>
+    <module>moodle-mybati</module>
+  </modules>
 
 	<properties>
 		<!-- VERSION info -->
@@ -127,6 +127,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>3.2.9.RELEASE</version>
+		</dependency>
 
 		<!-- ZOOKEEPER -->
 		<dependency>
@@ -138,7 +143,7 @@
 			<groupId>com.101tec</groupId>
 			<artifactId>zkclient</artifactId>
 			<version>0.4</version>
-		</dependency> 
+		</dependency>
 		<!-- Json -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
