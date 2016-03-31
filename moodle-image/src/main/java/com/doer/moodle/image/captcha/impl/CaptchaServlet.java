@@ -67,7 +67,6 @@ public class CaptchaServlet extends HttpServlet implements ICaptchaManager {
 		log.info("Start to init the Captcha Consumer ...");
 		consumer = new CaptchaConsumer(captchaQueue, waitTime, width, height,
 				charCount);
-		System.out.println(".....init..."+consumer.getCaptcha().getCaptchCode());
 	}
 
 	/**

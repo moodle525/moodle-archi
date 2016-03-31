@@ -6,10 +6,12 @@
 <title>page</title>
 <%@ include file="/page/common/common.jsp"%>
 <%
-	request.getRequestDispatcher("/login/page").forward(request, response);
+	request.getRequestDispatcher("/index").forward(request, response);
 %>
 </head>
 <body>
 	<h2></h2>
 </body>
 </html>
+
+
