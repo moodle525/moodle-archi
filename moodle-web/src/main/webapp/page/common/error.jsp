@@ -7,6 +7,5 @@
 </head>
 <body>
 	操作出错！
-	<s:actionerror/>
 </body>
 </html>

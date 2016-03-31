@@ -9,8 +9,6 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +22,6 @@ import com.doer.moodle.common.web.R;
 @Aspect
 @Component
 public class LogAspect {
-	// 本地异常日志记录对象
-	private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
 
 	@Autowired
 	HttpServletRequest request;

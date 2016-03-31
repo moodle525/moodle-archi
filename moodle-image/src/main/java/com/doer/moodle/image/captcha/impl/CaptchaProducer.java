@@ -36,7 +36,6 @@ public class CaptchaProducer implements Runnable {
 					}else {
 						captchaQueue.transfer(captcha);
 					}
-					System.out.println("..队列长度...."+captchaQueue.size()+"..验证码..."+captcha.getCaptchCode());
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}

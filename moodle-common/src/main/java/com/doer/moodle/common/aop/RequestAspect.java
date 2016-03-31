@@ -14,35 +14,42 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.doer.moodle.common.contants.Constant;
 import com.google.gson.Gson;
 
 @Component
 @Aspect
 public class RequestAspect {
 	private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
-	
+
 	@Autowired
 	private HttpServletRequest request;
 
 	@Pointcut(value = "@annotation(org.springframework.web.bind.annotation.RequestMapping)")
 	public void doRequest() {
 	}
-	
-	@Before(value="doRequest()")
-	public void beforeRequest(){
-		String contextPath = request.getContextPath();
-		String remoteAddr = request.getRemoteAddr();
-		String params = getParamsOfJson();
-		log.info("requst...url:"+contextPath+",params:"+params+",from "+remoteAddr);
+
+	@Before(value = "doRequest()")
+	public void beforeRequest() {
+		try {
+			request.setCharacterEncoding(Constant.CHARSET);
+			String uri = request.getRequestURI();
+			String remoteAddr = request.getRemoteAddr();
+			String params = getParamsOfJson();
+			log.info("requst...uri:" + uri + ",params:" + params + ",from " + remoteAddr);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
-	
-	private String getParamsOfJson(){
-		Map<String,String> map = new HashMap<String,String>();
-		Enumeration<String> paraNames = request.getAttributeNames();
-		for(Enumeration<String> e=paraNames;e.hasMoreElements();){
-		       String paraName=e.nextElement();
-		       String paraValue=request.getParameter(paraName);
-		       map.put(paraName, paraValue==null?"":paraValue);
+
+	private String getParamsOfJson() throws Exception {
+		Map<String, String> map = new HashMap<String, String>();
+		Enumeration<String> paramNames = request.getParameterNames();
+		for (Enumeration<String> e = paramNames; e.hasMoreElements();) {
+			String paraName = e.nextElement();
+			String paraValue = request.getParameter(paraName);
+			map.put(paraName, paraValue == null ? "" : new String(paraValue.getBytes("ISO-8859-1"), "UTF-8"));
 		}
 		return new Gson().toJson(map);
 	}
