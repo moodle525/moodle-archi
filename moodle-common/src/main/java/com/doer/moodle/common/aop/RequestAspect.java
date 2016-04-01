@@ -17,6 +17,12 @@ import org.springframework.stereotype.Component;
 import com.doer.moodle.common.contants.Constant;
 import com.google.gson.Gson;
 
+/**
+ * 请求信息切面
+ * 
+ * @author lixiongcheng
+ *
+ */
 @Component
 @Aspect
 public class RequestAspect {
