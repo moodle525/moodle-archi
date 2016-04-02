@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.doer</groupId>
+	<groupId>com.doer</groupId> 
 	<artifactId>moodle</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>moodle</name>
+	<packaging>pom</packaging> 
+	<name>moodle</name> 
 	<url>http://maven.apache.org</url>
-	<modules>
+	<modules>	
 		<module>moodle-common</module>
-		<module>moodle-dubbo</module>
+		<module>moodle-dubbo</module>	
 		<module>moodle-web</module>
 		<module>moodle-orm</module>
 		<module>moodle-image</module>
@@ -18,8 +19,9 @@
 		<module>moodle-mybatis</module>
 		<module>moodle-test</module>
 		<module>moodle-dubbo-interfaces</module>
-    <module>moodle-mybati</module>
-  </modules>
+		<module>moodle-mybati</module>
+		<module>moodle-mail</module>
+	</modules>
 
 	<properties>
 		<!-- VERSION info -->
@@ -41,18 +43,18 @@
 			<url>http://10.211.55.8:8081/nexus/content/repositories/central/</url>
 			<layout>default</layout>
 		</repository>
-	</repositories>
+	</repositories> 
 
 	<distributionManagement>
 		<repository>
 			<id>nexus-releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://127.0.0.1:8081/nexus/content/repositories/releases/</url>
+			<url>http://10.211.55.8:8081/nexus/content/repositories/releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://127.0.0.1:8081/nexus/content/repositories/snapshots/</url>
+			<url>http://10.211.55.8:8081/nexus/content/repositories/snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -253,6 +255,12 @@
 			<groupId>org.apache.curator</groupId>
 			<artifactId>curator-recipes</artifactId>
 			<version>${curator.version}</version>
+		</dependency> 
+
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.10</artifactId>
+			<version>0.9.0.1</version>
 		</dependency>
 
 	</dependencies>
