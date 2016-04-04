@@ -17,30 +17,17 @@
            http://www.springframework.org/schema/cache
            http://www.springframework.org/schema/cache/spring-cache.xsd">
 
-	<context:component-scan base-package="com.doer.moodle.cache" />
+	<context:annotation-config />
+	<task:annotation-driven />
 
-	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
-		<property name="maxActive" value="${redis.maxActive}" />
-		<property name="maxIdle" value="${redis.maxIdle}" />
-		<property name="maxWait" value="${redis.maxWait}" />
-		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
-		<property name="testOnReturn" value="${redis.testOnReturn}" />
-		<!-- <property name="testWhileIdle" value="true"/> -->
-	</bean>
+	<!-- placeHolder -->
+	<bean class="com.doer.moodle.common.config.ConfigPlaceholderConfigurer" />
 
-	<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool"
-		scope="singleton">
-		<constructor-arg index="0" ref="jedisPoolConfig" />
-		<constructor-arg index="1">
-			<list>
-				<bean class="redis.clients.jedis.JedisShardInfo">
-					<constructor-arg name="host" value="${redis.host}" />
-					<constructor-arg name="port" value="${redis.port}" />
-					<constructor-arg name="timeout" value="${redis.timeout}" />
-					<constructor-arg name="weight" value="1" />
-				</bean>
-			</list>
-		</constructor-arg>
-	</bean>
+	<!--proxy-target-class="true"强制使用cglib代理 如果为false则spring会自动选择 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- redis -->
+	<import resource="classpath*:spring/beans_redis_datasource.xml" />
+
 
 </beans>
