@@ -66,6 +66,7 @@ public class KafkaUtil {
 	 * @param threadCount
 	 *            消费线程数，该值应小于等于partition个数，多了也没用
 	 */
+	@SuppressWarnings("rawtypes")
 	public static <T extends Serializable> void startConsumer(String topic, final MqMessageHandler<T> handler,
 			int threadCount) throws Exception {
 		if (threadCount < 1)
@@ -82,6 +83,7 @@ public class KafkaUtil {
 		// 为每一个partition分配一个线程去消费
 		for (final KafkaStream stream : streams) {
 			executor.execute(new Runnable() {
+				@SuppressWarnings("unchecked")
 				@Override
 				public void run() {
 					ConsumerIterator<byte[], byte[]> it = stream.iterator();

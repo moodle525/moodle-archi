@@ -52,7 +52,7 @@
 		<property name="maxUploadSize" value="10485760" />
 	</bean>
 
-	<import resource="classpath:spring/application.xml" />
-	<import resource="classpath:dubbo/consumer.xml" />
+	<!-- <import resource="classpath:spring/application.xml" />
+	<import resource="classpath:dubbo/consumer.xml" /> -->
 
 </beans>  

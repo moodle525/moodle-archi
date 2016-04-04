@@ -10,7 +10,7 @@
 
 	<bean id="zkClient" class="com.doer.moodle.common.config.zk.ZkClient"
 		destroy-method="close">
-		<property name="zkAddress" value="10.211.55.8:2181" />
+		<property name="zkAddress" value="127.0.0.1:2181" />
 		<property name="timeOut" value="200000" />
 		<property name="sessionTimeOut" value="200000" />
 		<property name="authInfo" value="admin:admin" />
