@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
@@ -42,7 +43,15 @@ public class RequestAspect {
 			String uri = request.getRequestURI();
 			String remoteAddr = request.getRemoteAddr();
 			String params = getParamsOfJson();
-			log.info("requst...uri:" + uri + ",params:" + params + ",from " + remoteAddr);
+			HttpSession session = request.getSession();
+			String sessionId = null;
+			if(session!=null){
+				sessionId = session.getId();
+			}
+			StringBuffer sb = new StringBuffer();
+			sb.append("requst...uri:" + uri + ",params:" + params + ",from " + remoteAddr);
+			sb.append(",sessionId="+sessionId);
+			log.info(sb.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

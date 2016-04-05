@@ -4,10 +4,6 @@ package com.doer.moodle.common.contants;
 /**
  * 
  * @描述: 会话键常量类.
- * @作者: WuShuicheng.
- * @创建: 2014-8-19,上午9:26:46
- * @版本: V1.0
- *
  */
 public class SessionConstant {
 
