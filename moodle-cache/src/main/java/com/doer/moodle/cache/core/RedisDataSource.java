@@ -1,4 +1,4 @@
-package com.doer.moodle.cache;
+package com.doer.moodle.cache.core;
 
 import redis.clients.jedis.ShardedJedis;
 

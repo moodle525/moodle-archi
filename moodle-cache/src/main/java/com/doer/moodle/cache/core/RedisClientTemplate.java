@@ -1,4 +1,4 @@
-package com.doer.moodle.cache;
+package com.doer.moodle.cache.core;
 
 import java.util.Collection;
 import java.util.List;
