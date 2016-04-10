@@ -1,6 +1,7 @@
 package com.doer.moodle.cache;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -426,7 +427,250 @@ public class RedisClient {
 			return 0;
 		return num.longValue();
 	}
+
+	/*******************************************************************
+	 * 有序集合（通过权重score保证顺序）
+	 ******************************************************************/
+
+	/**
+	 * 向有序集合中添加元素
+	 * 
+	 * @param key
+	 * @param score
+	 *            权重，按score自动排序
+	 * @param member
+	 */
+	public void zadd(String key, double score, String member) {
+		clientTemplate.zadd(key, score, member);
+	}
+
+	/**
+	 * 按角标取值
+	 * 
+	 * @param key
+	 * @param start
+	 *            从0开始
+	 * @param end
+	 *            -1表示从最后开始，zrange(0,-1)即获取所有元素
+	 * @return
+	 */
+	public Set<String> zrange(String key, int start, int end) {
+		notExsits(key);
+		return clientTemplate.zrange(key, start, end);
+	}
+
+	/**
+	 * 按权重取值，分页功能
+	 * 
+	 * @param key
+	 * @param min
+	 * @param max
+	 * @param offset
+	 *            取值后偏移角标
+	 * @param count
+	 *            数量
+	 * @return
+	 */
+	public Set<String> zrangeByScore(String key, double min, double max, int offset, int count) {
+		notExsits(key);
+		return clientTemplate.zrangeByScore(key, min, max, offset, count);
+	}
+
+	/**
+	 * 有序集合元素数量
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public long zcard(String key) {
+		notExsits(key);
+		Long num = clientTemplate.zcard(key);
+		if (num == null)
+			return 0;
+		return num.longValue();
+	}
+
+	/**
+	 * 统计权重在[min,max]之间的元素个数
+	 * 
+	 * @param key
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public long zcount(String key, double min, double max) {
+		notExsits(key);
+		Long num = clientTemplate.zcount(key, min, max);
+		if (num == null)
+			return 0;
+		return num.longValue();
+	}
+
+	/**
+	 * 获取元素的权重or排名，正序
+	 * 
+	 * @param key
+	 * @param member
+	 * @return
+	 */
+	public long zrank(String key, String member) {
+		notExsits(key);
+		Long score = clientTemplate.zrank(key, member);
+		isNull(score);
+		return score.longValue();
+	}
+
+	/**
+	 * 获取元素的权重or排名，倒序
+	 * 
+	 * @param key
+	 * @param member
+	 * @return
+	 */
+	public long zrevrank(String key, String member) {
+		notExsits(key);
+		Long score = clientTemplate.zrevrank(key, member);
+		isNull(score);
+		return score.longValue();
+	}
+
+	/**
+	 * 按权重删除元素,[start,end]
+	 * 
+	 * @param key
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public long zremByScore(String key, double start, double end) {
+		notExsits(key);
+		Long num = clientTemplate.zremrangeByScore(key, start, end);
+		if (num == null)
+			return 0;
+		return num.longValue();
+	}
+
+	/**
+	 * 按角标删除元素,[start,end]
+	 * 
+	 * @param key
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public long zremByRank(String key, int start, int end) {
+		Long num = clientTemplate.zremrangeByRank(key, start, end);
+		if (num == null)
+			return 0;
+		return num.longValue();
+	}
+
+	/*******************************************************************
+	 * Hash
+	 ******************************************************************/
+	/**
+	 * 添加hash结构一个数据
+	 * 
+	 * @param key
+	 * @param field
+	 * @param value
+	 */
+	public void hset(String key, String field, String value) {
+		clientTemplate.hset(key, field, value);
+	}
+
+	public void hmset(String key, Map<String, String> map) {
+		clientTemplate.hmset(key, map);
+	}
+
+	/**
+	 * 返回key中,所有域与其值
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public Map<String, String> hgetAll(String key) {
+		notExsits(key);
+		return clientTemplate.hgetAll(key);
+	}
+
+	/**
+	 * 返回key中field域的值
+	 * 
+	 * @param key
+	 * @param field
+	 * @return
+	 */
+	public String hget(String key, String field) {
+		notExsits(key);
+		return clientTemplate.hget(key, field);
+	}
+
+	public List<String> hmget(String key, String... fields) {
+		notExsits(key);
+		return clientTemplate.hmget(key, fields);
+	}
+
+	/**
+	 * 删除key中 field域
+	 * 
+	 * @param key
+	 * @param field
+	 * @return
+	 */
+	public long hdel(String key, String field) {
+		notExsits(key);
+		Long num = clientTemplate.hdel(key, field);
+		if (num == null)
+			return 0;
+		return num.longValue();
+	}
+
+	/**
+	 * 返回key中元素的数量
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public long hlen(String key) {
+		notExsits(key);
+		Long num = clientTemplate.hlen(key);
+		if (num == null)
+			return 0;
+		return num.longValue();
+	}
+
+	/**
+	 * 判断key中有没有field域
+	 */
+	public boolean hexists(String key, String field) {
+		notExsits(key);
+		return clientTemplate.hexists(key, field).booleanValue();
+	}
+
+	/**
+	 * 返回key中所有的field
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public Set<String> hkeys(String key) {
+		notExsits(key);
+		return clientTemplate.hkeys(key);
+	}
+
+	/**
+	 * 返回key中所有的value
+	 * 
+	 * @param key
+	 * @return
+	 */
+	public List<String> hvalues(String key) {
+		notExsits(key);
+		return clientTemplate.hvals(key);
+	}
 	
+
 	public void isNull(Object obj) {
 		if (obj == null) {
 			throw new RuntimeException("parameter is null,please cheak it");
