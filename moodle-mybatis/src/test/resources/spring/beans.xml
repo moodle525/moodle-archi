@@ -20,7 +20,7 @@
 	<context:annotation-config />
 	<task:annotation-driven />
 
-	<bean class="com.doer.moodle.common.config.ConfigPlaceholderConfigurer" />
+	<!-- <bean class="com.doer.moodle.common.config.ConfigPlaceholderConfigurer" /> -->
 	
 	<!--proxy-target-class="true"强制使用cglib代理 如果为false则spring会自动选择 -->
 	<aop:aspectj-autoproxy proxy-target-class="true" />
