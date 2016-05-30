@@ -40,7 +40,7 @@
 		<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
 		<!--config用于解密码 -->
 		<property name="filters" value="stat,config" />
-		<property name="connectionProperties" value="config.decrypt=true" />
+		<!-- <property name="connectionProperties" value="config.decrypt=true" /> -->
 	</bean>
 
 	<!-- 将数据源映射到sqlSessionFactory中 -->
