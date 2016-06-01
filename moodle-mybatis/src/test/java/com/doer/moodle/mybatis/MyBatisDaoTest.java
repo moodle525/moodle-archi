@@ -30,7 +30,7 @@ public class MyBatisDaoTest {
 	public void save() throws Exception {
 		PmsUser user = new PmsUser();
 		user.setUserName("szss");
-		user.setUserNo("11ass11");
+		user.setUserNo("1111");
 		user.setUserPwd("1111111111111111111111111111");
 		user.setEmail("455@qq.com");
 		user.setRemark("4444");
