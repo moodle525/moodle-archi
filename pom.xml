@@ -29,7 +29,7 @@
 		<hibernate.version>4.1.10.Final</hibernate.version>
 		<commons.dbcp.version>1.4</commons.dbcp.version>
 		<mysql.version>5.1.16</mysql.version>
-		<curator.version>2.4.2</curator.version> 
+		<curator.version>2.9.1</curator.version> 
 		<zookeeper.version>3.4.8</zookeeper.version>
 		<mybatis.version>3.2.2</mybatis.version>
 		<spring.mybatis.version>1.2.4</spring.mybatis.version>
@@ -39,7 +39,7 @@
 		<repository>
 			<id>central</id>
 			<name>Central</name>
-			<url>http://10.211.55.8:8081/nexus/content/repositories/central/</url>
+			<url>http://127.0.0.1:8081/nexus/content/repositories/central/</url>
 			<layout>default</layout>
 		</repository>
 	</repositories>
@@ -76,11 +76,11 @@
 			<version>2.2.0</version>
 		</dependency>
 
-		<!-- <dependency> 
+		 <!-- <dependency> 
 			<groupId>org.apache.hbase</groupId> 
 			<artifactId>hbase</artifactId> 
 			<version>0.96.2-hadoop2</version>
-		</dependency>  -->
+		</dependency>   -->
 		
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -270,7 +270,7 @@
 
 		<!-- curator -->
 		<dependency>
-			<groupId>org.apache.curator</groupId>
+			<groupId>org.apache.curator</groupId> 
 			<artifactId>curator-framework</artifactId>
 			<version>${curator.version}</version>
 		</dependency>
