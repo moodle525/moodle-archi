@@ -8,7 +8,7 @@ public class UUIDTool {
 	}
 
 	public static String genId32() {
-		return UUID.randomUUID().toString().replaceAll("\\-", "").toUpperCase();
+		return UUID.randomUUID().toString().replaceAll("\\-", "").toLowerCase();
 	}
 	
 	public static int genShortId() {
