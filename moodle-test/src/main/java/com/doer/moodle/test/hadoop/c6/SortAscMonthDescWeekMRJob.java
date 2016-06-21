@@ -24,11 +24,14 @@ import org.apache.hadoop.util.ToolRunner;
 
 import com.doer.moodle.test.hadoop.utils.AirlineDataUtils;
 
+
 public class SortAscMonthDescWeekMRJob extends Configured implements Tool {
 
     public static class SortAscMonthDescWeekMapper extends
             Mapper<LongWritable, Text, MonthDoWWritable, DelaysWritable> {
 
+//1987,12,30,3,1438,1315,1715,1612,CO,757,NA,157,177,NA,63,83,EWR,PBI,1024,NA,NA,0,NA,0,NA,NA,NA,NA,NA
+//年，月，日，天
         public void map(LongWritable key, Text value, Context context)
                 throws IOException, InterruptedException {
             if (!AirlineDataUtils.isHeader(value)) {
@@ -72,17 +75,18 @@ public class SortAscMonthDescWeekMRJob extends Configured implements Tool {
             return range;
         }
 
-       // @Override
+        @Override
         public void setConf(Configuration conf) {
             this.conf = conf;
             this.indexRange = conf.getInt("key.range", getDefaultRange());
         }
 
-        //@Override
+        @Override
         public Configuration getConf() {
             return this.conf;
         }
 
+        @Override
         public int getPartition(MonthDoWWritable key, Text value,
                 int numReduceTasks) {
             return AirlineDataUtils.getCustomPartition(key, indexRange,
