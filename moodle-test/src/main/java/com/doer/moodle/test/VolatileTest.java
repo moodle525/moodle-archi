@@ -1,7 +1,7 @@
 package com.doer.moodle.test;
 
 public class VolatileTest extends Thread {
-	private volatile boolean stop = false;
+	private boolean stop = false;
 
 	public void stopMe() {
 		stop = true;
