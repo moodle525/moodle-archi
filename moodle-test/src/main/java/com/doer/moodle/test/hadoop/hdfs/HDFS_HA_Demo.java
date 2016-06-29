@@ -26,8 +26,7 @@ public class HDFS_HA_Demo {
 
 	@Before
 	public void init() throws Exception, Exception {
-		// 创建FileSystem的实现类（工具类）
-		Configuration conf = new Configuration();
+		// 创建FileSystem的实现类（工具类�?		Configuration conf = new Configuration();
 		conf.set("fs.defaultFS", "hdfs://ns1");
 		conf.set("dfs.nameservices", "ns1");
 		conf.set("dfs.ha.namenodes.ns1", "nn1,nn2");
@@ -48,8 +47,7 @@ public class HDFS_HA_Demo {
 		// 读取本地系统文件
 		InputStream in = new FileInputStream(
 				"/Volumes/Goer/code/bigdata/moodle-archi/moodle-test/src/main/resources/input/devairlinedataset/masterdata/airports.csv");
-		// 在HDFS上创建一个文件
-		OutputStream out = fs.create(new Path("/bigdatas"));
+		// 在HDFS上创建一个文�?		OutputStream out = fs.create(new Path("/bigdatas"));
 		IOUtils.copyBytes(in, out, 4096, true);
 	}
 
@@ -62,8 +60,7 @@ public class HDFS_HA_Demo {
 	}
 
 	/**
-	 * 文件下载，从HDFS到本地系统
-	 * 
+	 * 文件下载，从HDFS到本地系�?	 * 
 	 * @throws Exception
 	 */
 	@Test
@@ -74,8 +71,7 @@ public class HDFS_HA_Demo {
 	}
 
 	/**
-	 * 文件下载，快捷方式
-	 * 
+	 * 文件下载，快捷方�?	 * 
 	 * @throws Exception
 	 * @throws IOException
 	 */

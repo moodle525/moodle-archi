@@ -27,7 +27,7 @@
 [INFO ][20160329 10:06:26,378][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:06:26,378][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:06:27,468][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:06:27,535][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:06:27,535][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:06:28,126][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:11:52,389][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@77edc3aa: startup date [Tue Mar 29 10:06:25 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:11:52,399][DruidDataSource:1253] {dataSource-1} closed
@@ -60,7 +60,7 @@
 [INFO ][20160329 10:15:14,343][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:15:14,343][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:15:15,361][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:15:15,399][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:15:15,399][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:15:15,963][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:17:39,149][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@77edc3aa: startup date [Tue Mar 29 10:15:13 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:17:39,159][DruidDataSource:1253] {dataSource-1} closed
@@ -93,7 +93,7 @@
 [INFO ][20160329 10:39:48,724][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:39:48,725][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:39:49,770][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:39:49,812][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:39:49,812][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:39:50,409][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:43:27,956][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@1ac90b69: startup date [Tue Mar 29 10:39:48 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:43:27,969][DruidDataSource:1253] {dataSource-1} closed
@@ -126,7 +126,7 @@
 [INFO ][20160329 10:46:07,234][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:46:07,235][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:46:08,286][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:46:08,347][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:46:08,347][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:46:08,910][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:47:53,128][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@1ac90b69: startup date [Tue Mar 29 10:46:06 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:47:53,139][DruidDataSource:1253] {dataSource-1} closed
@@ -159,7 +159,7 @@
 [INFO ][20160329 10:48:41,796][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:48:41,796][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:48:42,850][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:48:42,892][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:48:42,892][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:48:43,460][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:52:24,659][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@1ac90b69: startup date [Tue Mar 29 10:48:41 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:52:24,669][DruidDataSource:1253] {dataSource-1} closed
@@ -192,7 +192,7 @@
 [INFO ][20160329 10:52:31,801][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:52:31,802][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:52:32,845][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:52:32,882][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:52:32,882][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:52:33,427][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:52:47,156][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@9876148: startup date [Tue Mar 29 10:52:31 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:52:47,167][DruidDataSource:1253] {dataSource-1} closed
@@ -225,7 +225,7 @@
 [INFO ][20160329 10:53:01,723][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:53:01,723][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:53:02,742][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:53:02,765][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:53:02,765][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:53:03,318][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:53:03,682][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@fe85adf: startup date [Tue Mar 29 10:53:01 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:53:03,692][DruidDataSource:1253] {dataSource-1} closed
@@ -258,7 +258,7 @@
 [INFO ][20160329 10:53:07,855][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 10:53:07,855][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 10:53:08,893][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 10:53:08,936][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 10:53:08,936][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 10:53:09,507][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 10:56:42,580][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@1ac90b69: startup date [Tue Mar 29 10:53:07 CST 2016]; root of context hierarchy
 [INFO ][20160329 10:56:42,598][DruidDataSource:1253] {dataSource-1} closed
@@ -291,7 +291,7 @@
 [INFO ][20160329 11:28:04,455][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 11:28:04,455][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 11:28:05,514][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 11:28:05,578][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 11:28:05,578][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 11:28:06,156][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 11:34:16,168][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@1ac90b69: startup date [Tue Mar 29 11:28:04 CST 2016]; root of context hierarchy
 [INFO ][20160329 11:34:16,181][DruidDataSource:1253] {dataSource-1} closed
@@ -324,7 +324,7 @@
 [INFO ][20160329 14:03:32,290][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 14:03:32,291][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 14:03:33,339][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 14:03:33,385][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 14:03:33,385][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 14:03:33,961][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 14:16:13,870][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@9876148: startup date [Tue Mar 29 14:03:31 CST 2016]; root of context hierarchy
 [INFO ][20160329 14:16:13,887][DruidDataSource:1253] {dataSource-1} closed
@@ -357,7 +357,7 @@
 [INFO ][20160329 15:19:57,342][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 15:19:57,342][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 15:19:57,357][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 15:19:57,386][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 15:19:57,386][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 15:19:57,941][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 15:20:51,376][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@1703c2db: startup date [Tue Mar 29 15:19:56 CST 2016]; root of context hierarchy
 [INFO ][20160329 15:20:51,388][DruidDataSource:1253] {dataSource-1} closed
@@ -390,7 +390,7 @@
 [INFO ][20160329 15:41:57,914][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 15:41:57,914][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 15:41:58,958][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 15:41:58,999][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 15:41:58,999][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 15:41:59,591][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 15:42:51,547][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@31fc049e: startup date [Tue Mar 29 15:41:57 CST 2016]; root of context hierarchy
 [INFO ][20160329 15:42:51,559][DruidDataSource:1253] {dataSource-1} closed
@@ -423,7 +423,7 @@
 [INFO ][20160329 15:43:19,302][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 15:43:19,303][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 15:43:20,346][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 15:43:20,387][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 15:43:20,387][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 15:43:20,949][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 15:44:11,650][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@77edc3aa: startup date [Tue Mar 29 15:43:18 CST 2016]; root of context hierarchy
 [INFO ][20160329 15:44:11,662][DruidDataSource:1253] {dataSource-1} closed
@@ -456,7 +456,7 @@
 [INFO ][20160329 15:44:37,819][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 15:44:37,819][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 15:44:38,875][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 15:44:38,917][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 15:44:38,917][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 15:44:39,467][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 15:46:10,059][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@77edc3aa: startup date [Tue Mar 29 15:44:37 CST 2016]; root of context hierarchy
 [INFO ][20160329 15:46:10,070][DruidDataSource:1253] {dataSource-1} closed
@@ -489,7 +489,7 @@
 [INFO ][20160329 15:46:35,283][ConnectionStateManager:194] State change: CONNECTED
 [WARN ][20160329 15:46:35,284][ConnectionStateManager:212] There are no ConnectionStateListeners registered.
 [INFO ][20160329 15:46:36,346][ConfigurationCenter:44] config load successfully...
-[INFO ][20160329 15:46:36,402][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160329 15:46:36,402][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160329 15:46:36,961][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160329 15:49:49,835][AbstractApplicationContext:873] Closing org.springframework.context.support.GenericApplicationContext@50c283c: startup date [Tue Mar 29 15:46:34 CST 2016]; root of context hierarchy
 [INFO ][20160329 15:49:49,845][DruidDataSource:1253] {dataSource-1} closed
@@ -528,7 +528,7 @@
 [INFO ][20160425 22:42:08,982][ZkClient:134] node[/com/doer/moodle/paths/com.doer.moodle.dubbo]created,
 [INFO ][20160425 22:42:08,985][ZkClient:134] node[/com/doer/moodle/dubbo]created,{"moodle.provider.appname":"moodle_dubbo_service","moodle.registry.protocol":"zookeeper","moodle.registry.address":"10.211.55.8:2181","moodle.provider.registry.file":"./dubbo-registry.dat","moodle.provider.protocol":"dubbo","moodle.protocol.port":"20880","moodle.provider.timeout":"20000","moodle.consumer.appname":"moodle_dubbo_web"}
 [INFO ][20160425 22:42:08,986][ConfigurationCenter:44] config load successfully...
-[INFO ][20160425 22:42:09,024][ConfigPlaceholderConfigurer:72] 属性设置完成
+[INFO ][20160425 22:42:09,024][ConfigPlaceholderConfigurer:72] 属�?设置完成
 [INFO ][20160425 22:42:09,943][DruidDataSource:642] {dataSource-1} inited
 [INFO ][20160425 22:42:10,616][XmlBeanDefinitionReader:316] Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
 [INFO ][20160425 22:42:10,651][SQLErrorCodesFactory:126] SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
