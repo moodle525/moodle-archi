@@ -5,16 +5,21 @@ import kafka.javaapi.producer.Producer;
 import kafka.producer.KeyedMessage;
 import kafka.producer.ProducerConfig;
 
+/**
+ * 同步生产模型
+ * @author lixiongcheng
+ *
+ */
 public class SyncProduce {
 	public static void main(String[] args) {
         long events = Long.MAX_VALUE;
         Random rnd = new Random();
  
         Properties props = new Properties();
-        props.put("metadata.broker.list", "10.206.216.13:19092,10.206.212.14:19092,10.206.209.25:19092");
+        props.put("metadata.broker.list", "10.211.55.14:9092,10.211.55.15:9092,10.211.55.16:9092");
         props.put("serializer.class", "kafka.serializer.StringEncoder");
 		//kafka.serializer.DefaultEncoder
-        props.put("partitioner.class", "kafka.producer.partiton.SimplePartitioner");
+        props.put("partitioner.class", "com.doer.moodle.test.kafka.producer.partiton.SimplePartitioner");
 		//kafka.producer.DefaultPartitioner: based on the hash of the key
         props.put("request.required.acks", "1");
 		//0;  绝不等确认  1:   leader的一个副本收到这条消息，并发回确认 -1：   leader的所有副本都收到这条消息，并发回确认

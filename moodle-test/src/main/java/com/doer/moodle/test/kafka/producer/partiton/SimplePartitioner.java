@@ -8,6 +8,11 @@ public class SimplePartitioner implements Partitioner {
  
     }
  
+    /**
+     * 
+     * 分区数为[0,a_numPartitions-1]
+     */
+    @Override
     public int partition(Object key, int a_numPartitions) {
         int partition = 0;
         String stringKey = (String) key;

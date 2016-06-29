@@ -16,6 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 分区消费模型
+ * @author lixiongcheng
+ *
+ */
 public class PartitionConsumerTest {
 	public static void main(String args[]) {
 		PartitionConsumerTest example = new PartitionConsumerTest();
@@ -26,15 +31,15 @@ public class PartitionConsumerTest {
 		}
 		
 		List<String> seeds = new ArrayList<String>();
-		String hosts="10.206.216.13,10.206.212.14,10.206.209.25";
+		String hosts="10.211.55.14,10.211.55.15,10.211.55.16";
 		String[] hostArr = hosts.split(",");
 		for(int index = 0;index < hostArr.length;index++){
 			seeds.add(hostArr[index].trim());
 		}
 		
-		int port = 19092;
+		int port = 9092;
 		 
-        int partLen = Integer.parseInt(args[0]);
+        int partLen = Integer.parseInt("5");
 		for(int index=0;index < partLen;index++){
 	        try {
 	            example.run(maxReads, topic, index/*partition*/, seeds, port);

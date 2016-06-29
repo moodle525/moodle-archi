@@ -12,6 +12,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 分组消费模式
+ * @author lixiongcheng
+ *
+ */
 public class GroupConsumerTest extends Thread {
 	private final ConsumerConnector consumer;
     private final String topic;
@@ -69,10 +74,10 @@ public class GroupConsumerTest extends Thread {
 			System.out.println("Please assign partition number.");
 		}
 		
-        String zooKeeper = "10.206.216.13:12181,10.206.212.14:12181,10.206.209.25:12181";
+        String zooKeeper = "10.211.55.14:2181,10.211.55.15:2181,10.211.55.16:2181";
         String groupId = "jikegrouptest";
         String topic = "jiketest";
-        int threads = Integer.parseInt(args[0]);
+        int threads = Integer.parseInt("5");
  
 		GroupConsumerTest example = new GroupConsumerTest(zooKeeper, groupId, topic);
         example.run(threads);
